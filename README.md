@@ -48,3 +48,16 @@ Element 3: Dynamic memory management
 •	Use int tel_usage to record the number of usage of the teleporter ( i = i+1, when the teleporter is being steped on). Resets when i = 3.
 •	int pos_p1_e_x  and  int pos_p1_e_y will be used repeatedly to store the position (x,y) of emperor of player 1, same case for the other chess pieces
 •	int tele_x and int tele_y will be used to store the current position of the teleporter
+
+Element 4: File input/output (e.g., for loading/saving game status)
+•	Use pos_p1_e_x.txt to store the position of emperor of player one in each turn
+•	Use map.txt to store the map
+•	Use tele.txt to store the position of the teleport in previous turns to prevent same teleporter position being generated on consecutive turns
+•	The input are to be saved for users to retrieve the previous game progress
+
+
+Element 5: Program codes in multiple files
+•	main.cpp includes the selection of game modes and all the required header files
+•	map_init.h contains functions for creating random initialization of the map
+•	player_status.h contains functions for storing the path and location of the chess
+•	progress.h contains functions to guide player’s action by displaying corresponding information for asking input in each round
