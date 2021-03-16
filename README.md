@@ -1,8 +1,8 @@
 # COMP2113 Project Proposal
 
-## Contact Information
+##Contact Information
 **Group number:** 13\
-**Group members:**\
+**Group members:**
 Chan Chi Lok Max    (UID: 3035690440)\
 Lau Hiu Tung Athena (UID: 3035689245)
 
@@ -31,10 +31,9 @@ The identity of player 1’s own pieces will be revealed when in player 1’s tu
 Furthermore, the path contains 2 hidden teleporters, when any of the pieces step into one of the teleporter, it will be transported to the other end of the teleporter (i.e. when a chess steps into (3,5) and instantly being transported to (7,4), both player should realize the actual location of the two teleporters). If the other end of the teleporter is occupied by a piece, the chess will not be teleported when it steps into the teleporter. The location of the two teleporters will change after being used for 3 times.
 
 The game will terminate in either situation\
-Case 1:\
-All chess pieces are being killed. When a chess piece is being killed, the screen display “player i’s Emperor is killed”.\
-Case 2:\
-Any chess piece of the enemy enters your base.
+Case 1: All chess pieces are being killed. When a chess piece is being killed, the screen\
+        display “player i’s Emperor is killed”.\
+Case 2: Any chess piece of the enemy enters your base.
 
 Players can choose to retrieve previously saved game progress or to start a new game.
 
