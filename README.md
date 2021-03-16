@@ -1,5 +1,5 @@
 # COMP2113_Project
-Group 13:
+Group 13:\
 Group members: Chan Chi Lok Max, Lau Hiu Tung Athena
 
 The game has 2 game mode. Player vs NPC or player vs Player.
