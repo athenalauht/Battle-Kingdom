@@ -31,3 +31,20 @@ Case 1: All chess pieces are being killed. When a chess piece is being killed, t
 Case 2: Any chess piece of the enemy enters your base
 
 Players can choose to retrieve previously saved game progress or to start a new game.
+
+Features
+
+Element 1: Generation of random game sets or events
+•	The initial path connecting the two castle are randomly generated
+•	The teleporter in the path is randomly generated
+
+Element 2: Data structures for storing game status
+•	The map will be saved by a char array which stores the path and the location of the chess, with * indicating the path.
+•	Use int array to record the lives of each of the chess pieces
+•	string p1_name is to store the player’s name
+
+
+Element 3: Dynamic memory management
+•	Use int tel_usage to record the number of usage of the teleporter ( i = i+1, when the teleporter is being steped on). Resets when i = 3.
+•	int pos_p1_e_x  and  int pos_p1_e_y will be used repeatedly to store the position (x,y) of emperor of player 1, same case for the other chess pieces
+•	int tele_x and int tele_y will be used to store the current position of the teleporter
