@@ -1,0 +1,43 @@
+create_map()
+-- random generate map of 30 * 30
+-- borders indicated by char(42)
+-- entry for the chess
+-- path indicated by char(176) [random generated]
+    -- criteria : at least three possible path to walk through
+-- store the path into txt file
+
+display_map()
+-- display the map and the location of the chess (read from txt)
+-- display of chess:
+    player 1 :black circle, (U+25CF), ‘u\25CF’
+    player 2: white circle, (U+25CB), ‘u\25CB’
+
+    Emperor (U+2654), ‘u\2654’
+    Knight (U+2658), ‘u\2658’
+    Soldier (U+2659), ‘u\2659’
+    Assassin (U+2657), ‘u\2657’
+
+
+retrieve_progress()
+-- if there is stored data, use stored data
+
+user_interface()
+-- store 4 chess's location
+-- ask for input (decision)
+  -- store into user1_position
+-- check for feasibility()
+
+teleport()
+-- random gen (gen according to the rules)
+
+feasibility()
+-- check if the chess can move to that position
+-- check fi there is teleport
+
+
+
+battle_result()
+-- identify who is the loser
+
+domination_result()
+-- result of a player successfully entered others Emperor
