@@ -9,8 +9,8 @@ int main() {
 
   //map size of 75*75
 
-  const int SIZE_X = 100;
-  const int SIZE_Y = 25;
+  const int SIZE_X = 100 - 1;
+  const int SIZE_Y = 25 - 1;
 
   //random generate paths connecting (2,2) and (SIZE-2, SIZE-2)
   //first path start from (2,2)
