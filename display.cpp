@@ -6,7 +6,7 @@
 #define C "\u27A4"
 #define D "\u2B9E"
 #define E "\u2588"
-
+#define CROSS "\u254B"
 using namespace std;
 
 void game_title()
@@ -161,9 +161,16 @@ void dead_message(int x)
   }
 }
 
+void compass()
+{
+  cout << "  " << "N" << endl;
+  cout << "W" << " " << CROSS << " " << "E" << endl;
+  cout << "  " << "S" << endl;
+}
 int main()
 {
   game_title();
   game_rules();
   dead_message(2);
+  compass();
 }
