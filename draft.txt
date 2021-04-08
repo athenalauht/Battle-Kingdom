@@ -6,6 +6,7 @@ create_map()
     -- criteria : at least three possible path to walk through
 -- store the path into txt file
 
+
 display_map()
 -- display the map and the location of the chess (read from txt)
 -- display of chess:
@@ -21,23 +22,29 @@ display_map()
 retrieve_progress()
 -- if there is stored data, use stored data
 
+
 user_interface()
 -- store 4 chess's location
 -- ask for input (decision)
   -- store into user1_position
 -- check for feasibility()
 
+
 teleport()
 -- random gen (gen according to the rules)
+
 
 feasibility()
 -- check if the chess can move to that position
 -- check fi there is teleport
 
 
-
 battle_result()
 -- identify who is the loser
 
+
 domination_result()
 -- result of a player successfully entered others Emperor
+
+game_rules()
+-- display game rules
