@@ -1,24 +1,81 @@
 #include <iostream>
 #include <cctype>
+#include <string>
+#include <fstream>
+#include <sstream>
+
 using namespace std;
 int main() {
 
   //map size of 75*75
 
-  const int SIZE = 75;
+  const int SIZE_X = 100;
+  const int SIZE_Y = 25;
 
   //random generate paths connecting (2,2) and (SIZE-2, SIZE-2)
   //first path start from (2,2)
   //random generate the direction by taking:
-  // 0 as North, 1 as East, 2 as South, 3 as West
+  // 0 as North, 123 as East, 4 as South, 567 as West
+  //divided into eight part, increase the prob of going west and south
 
-  //prevent unnesssary looping of a path
-  //if 0 is generated in x-1, x cannot be 2
-  //if 1 is generated in x-1, x cannot be 3
-  //if 2 is generated in x-1, x cannot be 0
-  //if 3 is generated in x-1, x cannot be 1
+
 
   int cur_x = 2, cur_y = 2;
+  int temp_cur_x, temp_cur_y;
+  int dir = -1;                       //init direction
+  int temp_rand;
+
+  cout << "a";
+  //open path.txt
+  ofstream path;
+  path.open("path.txt");
+
+
+
+  while ((cur_x != SIZE_X - 2) || (cur_y != SIZE_Y - 2)){
+
+    temp_rand = rand() % 8;
+    switch (temp_rand){
+
+      case 0:
+      temp_cur_y = cur_y - 1;
+      break;
+
+      case 1:
+      case 2:
+      case 3:
+      temp_cur_x = cur_x + 1;
+      break;
+
+      case 4:
+      case 5:
+      case 6:
+      temp_cur_y = cur_y + 1;
+      break;
+
+      case 7:
+      temp_cur_x = cur_x - 1;
+      break;
+
+      }
+      cout << temp_cur_x << " " << temp_cur_y << endl;
+
+      if ((temp_cur_x <= SIZE_X - 2) && (temp_cur_y <= SIZE_Y - 2) && (temp_cur_x >= 2) && (temp_cur_y >= 2)){
+
+        cur_x = temp_cur_x;
+        cur_y = temp_cur_y;
+
+        path << cur_x << " ";
+        path << cur_y << '\n';
+
+
+    }
+
+    path.close();
+
+
+  }
+
 
 
 
