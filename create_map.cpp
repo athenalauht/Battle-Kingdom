@@ -3,6 +3,9 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 using namespace std;
 int main() {
@@ -15,7 +18,7 @@ int main() {
   //random generate paths connecting (2,2) and (SIZE-2, SIZE-2)
   //first path start from (2,2)
   //random generate the direction by taking:
-  // 0 as North, 123 as East, 456 as South, 7 as West
+  // 0 as North, 12 as East, 456 as South, 7 as West
   //divided into eight part, increase the prob of going west and south
 
 
@@ -30,7 +33,10 @@ int main() {
   ofstream path;
   path.open("path.txt");
 
+  path << "2 2\n";
+  srand (time(NULL));
 
+  cur_x = 2, cur_y = 2;
 
   while ((cur_x != SIZE_X - 2) || (cur_y != SIZE_Y - 2)){
 
@@ -38,27 +44,26 @@ int main() {
     switch (temp_rand){
 
       case 0:
+      case 6:
       temp_cur_y = cur_y - 1;
       break;
 
       case 1:
-      case 2:
-      case 3:
+      case 4:
+      case 7:
       temp_cur_x = cur_x + 1;
       break;
 
-      case 4:
+      case 2:
       case 5:
-      case 6:
       temp_cur_y = cur_y + 1;
       break;
 
-      case 7:
+      case 3:
       temp_cur_x = cur_x - 1;
       break;
 
       }
-      cout << temp_cur_x << " " << temp_cur_y << endl;
 
       if ((temp_cur_x <= SIZE_X - 2) && (temp_cur_y <= SIZE_Y - 2) && (temp_cur_x >= 2) && (temp_cur_y >= 2)){
 
@@ -69,10 +74,54 @@ int main() {
         path << cur_y << '\n';
 
 
+      }
+
+
     }
 
+    cur_x = 2, cur_y = 2;
+    while ((cur_x != SIZE_X - 2) || (cur_y != SIZE_Y - 2)){
 
-  }
+      temp_rand = rand() % 7;
+      switch (temp_rand){
+
+        case 0:
+        case 6:
+        temp_cur_y = cur_y - 1;
+        break;
+
+        case 1:
+        case 4:
+
+        temp_cur_x = cur_x + 1;
+        break;
+
+        case 2:
+        case 5:
+        temp_cur_y = cur_y + 1;
+        break;
+
+        case 3:
+        temp_cur_x = cur_x - 1;
+        break;
+
+        }
+
+        if ((temp_cur_x <= SIZE_X - 2) && (temp_cur_y <= SIZE_Y - 2) && (temp_cur_x >= 2) && (temp_cur_y >= 2)){
+
+          cur_x = temp_cur_x;
+          cur_y = temp_cur_y;
+
+          path << cur_x << " ";
+          path << cur_y << '\n';
+
+
+        }
+
+
+      }
+
+
   path.close();
 
   //player start from (2,2)

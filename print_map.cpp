@@ -4,6 +4,7 @@
 #include <fstream>
 #include <sstream>
 
+
 using namespace std;
 int main() {
 
@@ -11,7 +12,7 @@ int main() {
   const int SIZE_Y = 25;
 
   //map of the above size
-  char map[25][100];
+  unsigned char map[25][100];
 
   //initialize the map
   for (int y = 0; y < SIZE_Y; ++y){
@@ -35,6 +36,8 @@ int main() {
 
   }
 
+
+
   //drawing the path
 
   int index_x, index_y;  //storing x and y
@@ -47,7 +50,7 @@ int main() {
     path >> index_y;
     temp_y = index_y;
 
-    map[temp_x][temp_y] = '.';
+    map[temp_y][temp_x] = '0';
 
   }
 
@@ -95,6 +98,19 @@ int main() {
       map[y][x] = 47;
 
     }
+
+  }
+
+  // print map
+  for (int y = 0; y < SIZE_Y; ++y){
+
+    for (int x = 0; x < SIZE_X; ++x){
+
+      cout << map[y][x];
+
+    }
+
+    cout << '\n';
 
   }
 
