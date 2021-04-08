@@ -15,7 +15,7 @@ int main() {
   //random generate paths connecting (2,2) and (SIZE-2, SIZE-2)
   //first path start from (2,2)
   //random generate the direction by taking:
-  // 0 as North, 123 as East, 4 as South, 567 as West
+  // 0 as North, 123 as East, 456 as South, 7 as West
   //divided into eight part, increase the prob of going west and south
 
 
@@ -25,7 +25,7 @@ int main() {
   int dir = -1;                       //init direction
   int temp_rand;
 
-  cout << "a";
+
   //open path.txt
   ofstream path;
   path.open("path.txt");
@@ -71,20 +71,13 @@ int main() {
 
     }
 
-    path.close();
-
 
   }
-
-
-
+  path.close();
 
   //player start from (2,2)
   //player 1 initial chess stays at (0,0),(0,1),(1,0),(1,1)
   //player 2 initial chess stays at (SIZE,SIZE), (SIZE,SIZE-1), (SIZE-1,SIZE),(SIZE-1,SIZE-1)
-
-
-
 
 
 }
