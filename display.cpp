@@ -56,37 +56,37 @@ void game_rules()
 
   cout << C << " Battle Rules";
   cout <<
-    R"(
-    1. Emperor channels power from the core of the sun, he can kill Knight and Soldier ruthlessly
-    2. Knight is the apprentice of the combat master, he can kill Soldier and Assassin gracefully
-    3. Soldier is equipped with night goggles, he can spot and kill Assassin with full effort
-    4. Assassin hides in the dark, he can sneak and kill the emperor without a sound
+  R"(
+  1. Emperor channels power from the core of the sun, he can kill Knight and Soldier ruthlessly
+  2. Knight is the apprentice of the combat master, he can kill Soldier and Assassin gracefully
+  3. Soldier is equipped with night goggles, he can spot and kill Assassin with full effort
+  4. Assassin hides in the dark, he can sneak and kill the emperor without a sound
 
-    If pieces with same status are encountered, the attacker wins.
-    The identity of player 1’s own pieces will be revealed when in player 1’s turn and return to unknown when the turn is ended, same case for player 2.
-    Therefore, the identity of the enemy’s pieces are unknown. Players have to make the decision on whether to attack or not as the battle result depends on the piece’s identity.
-    )";
+  If pieces with same status are encountered, the attacker wins.
+  The identity of player 1’s own pieces will be revealed when in player 1’s turn and return to unknown when the turn is ended, same case for player 2.
+  Therefore, the identity of the enemy’s pieces are unknown. Players have to make the decision on whether to attack or not as the battle result depends on the piece’s identity.
+  )";
   cout << "\n""\n""\n";
 
   cout << C << " Teleporters";
   cout <<
-    R"(
-    Furthermore, the path contains 2 hidden teleporters, when any of the pieces step into one of the teleporter, it will be transported to the other end of the teleporter
-    (i.e. when a chess steps into (3,5) and instantly being transported to (7,4), both player should realize the actual location of the two teleporters).
-    If the other end of the teleporter is occupied by a piece, the chess will not be teleported when it steps into the teleporter.
-    The location of the two teleporters will change after being used for 3 times.
+  R"(
+  Furthermore, the path contains 2 hidden teleporters, when any of the pieces step into one of the teleporter, it will be transported to the other end of the teleporter
+  (i.e. when a chess steps into (3,5) and instantly being transported to (7,4), both player should realize the actual location of the two teleporters).
+  If the other end of the teleporter is occupied by a piece, the chess will not be teleported when it steps into the teleporter.
+  The location of the two teleporters will change after being used for 3 times.
   )";
   cout << "\n""\n""\n";
 
   cout << C << " Game Termination";
   cout <<
-    R"(
-      Case 1: All chess pieces are being killed. When a chess piece is being killed, the screen
-              display “player i’s Emperor is killed”.
-      Case 2: Any chess piece of the enemy enters your base.
+  R"(
+  Case 1: All chess pieces are being killed. When a chess piece is being killed, the screen
+          display “player i’s Emperor is killed”.
+  Case 2: Any chess piece of the enemy enters your base.
 
-      Players can choose to retrieve previously saved game progress or to start a new game.
-    )";
+  Players can choose to retrieve previously saved game progress or to start a new game.
+  )";
   cout << "\n""\n";
 }
 
