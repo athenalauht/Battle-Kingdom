@@ -81,8 +81,3 @@ void create_map()
 
 
 }
-
-int main()
-{
-  create_map();
-}
