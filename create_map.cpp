@@ -5,8 +5,8 @@
 #include <sstream>
 
 using namespace std;
-int main() {
-
+void create_map()
+{
   //map size of 75*75
 
   const int SIZE_X = 100 - 1;
@@ -80,4 +80,9 @@ int main() {
   //player 2 initial chess stays at (SIZE,SIZE), (SIZE,SIZE-1), (SIZE-1,SIZE),(SIZE-1,SIZE-1)
 
 
+}
+
+int main()
+{
+  create_map();
 }
