@@ -31,7 +31,6 @@ void game_title()
              ###########  ###########  ##          ##  ###########  ##        ##
   )" << endl;
   cout << "    " << B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B << endl;
-  cout << endl;
 }
 
 void game_rules()
@@ -87,8 +86,7 @@ void game_rules()
   Case 2: Any chess piece of the enemy enters your base.
 
   Players can choose to retrieve previously saved game progress or to start a new game.
-  )";
-  cout << "\n""\n";
+  )" << endl;
 }
 
 void dead_message(int x)
