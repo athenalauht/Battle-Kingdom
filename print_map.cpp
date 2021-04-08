@@ -98,19 +98,6 @@ int main() {
 
   }
 
-  // print map
-  for (int y = 0; y < SIZE_Y; ++y){
-
-    for (int x = 0; x < SIZE_X; ++x){
-
-      cout << map[y][x];
-
-    }
-
-    cout << '\n';
-
-  }
-
 
 
 
