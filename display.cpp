@@ -93,7 +93,7 @@ void dead_message(int x)
 {
   if (x == 1) {
     cout << E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E << endl;
-    for (int i = 0; i < 14; ++i) {
+    for (int i = 0; i < 13; ++i) {
       cout << "\n";
     }
     cout <<
@@ -111,6 +111,8 @@ void dead_message(int x)
 
 
 
+
+
         ##########  ###########         #########     ###########        ##        #########
             ##      ##                  ##      ##    ##                ####       ##      ##
             ##      ##                  ##       ##   ##               ##  ##      ##       ##
@@ -119,14 +121,14 @@ void dead_message(int x)
             ##               ##         ##      ##    ##            ##        ##   ##      ##
         ##########  ###########         #########     ###########  ##          ##  #########
     )" << endl;
-    for (int i = 0; i < 14; ++i) {
+    for (int i = 0; i < 13; ++i) {
       cout << "\n";
     }
     cout << E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E << endl;
   }
   else {
     cout << E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E << endl;
-    for (int i = 0; i < 14; ++i) {
+    for (int i = 0; i < 13; ++i) {
       cout << "\n";
     }
     cout <<
@@ -144,6 +146,8 @@ void dead_message(int x)
 
 
 
+
+
         ##########  ###########         #########     ###########        ##        #########
             ##      ##                  ##      ##    ##                ####       ##      ##
             ##      ##                  ##       ##   ##               ##  ##      ##       ##
@@ -152,7 +156,7 @@ void dead_message(int x)
             ##               ##         ##      ##    ##            ##        ##   ##      ##
         ##########  ###########         #########     ###########  ##          ##  #########
     )" << endl;
-    for (int i = 0; i < 14; ++i) {
+    for (int i = 0; i < 13; ++i) {
       cout << "\n";
     }
     cout << E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E << endl;
@@ -169,6 +173,7 @@ int main()
 {
   game_title();
   game_rules();
+  dead_message(1);
   dead_message(2);
   compass();
 }
