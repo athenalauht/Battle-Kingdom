@@ -6,7 +6,7 @@
 #define C "\u27A4"
 #define D "\u2B9E"
 #define E "\u2588"
-
+#define CROSS "\u254B"
 using namespace std;
 
 void game_title()
@@ -31,7 +31,6 @@ void game_title()
              ###########  ###########  ##          ##  ###########  ##        ##
   )" << endl;
   cout << "    " << B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B << endl;
-  cout << endl;
 }
 
 void game_rules()
@@ -87,15 +86,14 @@ void game_rules()
   Case 2: Any chess piece of the enemy enters your base.
 
   Players can choose to retrieve previously saved game progress or to start a new game.
-  )";
-  cout << "\n""\n";
+  )" << endl;
 }
 
 void dead_message(int x)
 {
   if (x == 1) {
     cout << E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E << endl;
-    for (int i = 0; i < 14; ++i) {
+    for (int i = 0; i < 13; ++i) {
       cout << "\n";
     }
     cout <<
@@ -113,6 +111,8 @@ void dead_message(int x)
 
 
 
+
+
         ##########  ###########         #########     ###########        ##        #########
             ##      ##                  ##      ##    ##                ####       ##      ##
             ##      ##                  ##       ##   ##               ##  ##      ##       ##
@@ -121,14 +121,14 @@ void dead_message(int x)
             ##               ##         ##      ##    ##            ##        ##   ##      ##
         ##########  ###########         #########     ###########  ##          ##  #########
     )" << endl;
-    for (int i = 0; i < 14; ++i) {
+    for (int i = 0; i < 13; ++i) {
       cout << "\n";
     }
     cout << E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E << endl;
   }
   else {
     cout << E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E << endl;
-    for (int i = 0; i < 14; ++i) {
+    for (int i = 0; i < 13; ++i) {
       cout << "\n";
     }
     cout <<
@@ -146,6 +146,8 @@ void dead_message(int x)
 
 
 
+
+
         ##########  ###########         #########     ###########        ##        #########
             ##      ##                  ##      ##    ##                ####       ##      ##
             ##      ##                  ##       ##   ##               ##  ##      ##       ##
@@ -154,16 +156,24 @@ void dead_message(int x)
             ##               ##         ##      ##    ##            ##        ##   ##      ##
         ##########  ###########         #########     ###########  ##          ##  #########
     )" << endl;
-    for (int i = 0; i < 14; ++i) {
+    for (int i = 0; i < 13; ++i) {
       cout << "\n";
     }
     cout << E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E << endl;
   }
 }
 
+void compass()
+{
+  cout << "  " << "N" << endl;
+  cout << "W" << " " << CROSS << " " << "E" << endl;
+  cout << "  " << "S" << endl;
+}
 int main()
 {
   game_title();
   game_rules();
+  dead_message(1);
   dead_message(2);
+  compass();
 }
