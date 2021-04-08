@@ -8,9 +8,9 @@ Lau Hiu Tung Athena (UID: 3035689245)
 
 ## **Description**
 
-The game has 2 game mode. Player vs NPC or player vs Player.
+The game is a player vs Player game.
 
-A 25 x 25 map will be generated. There will be two castles in each of the diagonal corner. Random paths will be created which connects the castle of the first player to that of the second player. Players have to compete with each other to gain full control of the kingdom.
+A 100 x 50 map will be generated. There will be two castles in each of the diagonal corner. Random paths will be created which connects the castle of the first player to that of the second player. Players have to compete with each other to gain full control of the kingdom.
 
 ## **Game Rule**
 Each player will have 4 chess pieces to deploy. Initially, all pieces will remain inside the player’s castle. Players will take turns to move the pieces. In each round, player will choose 1 piece and decide the direction (North, East, South, West) and the number of steps (1, 2, 3, 4, 5) to move. However, the piece can only walk straight within a turn (i.e. the player can only walk horizontally or vertically)

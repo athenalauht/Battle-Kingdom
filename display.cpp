@@ -5,12 +5,13 @@
 #define B "\u2584"
 #define C "\u27A4"
 #define D "\u2B9E"
+#define E "\u2588"
 
 using namespace std;
 
 void game_title()
 {
-  cout << "    " << A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A << endl;
+  cout << "    " << A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A<< endl;
   cout << "    " <<
   R"(
        ###########       ##        ###########  ############  ##           ###########
@@ -36,8 +37,8 @@ void game_title()
 void game_rules()
 {
   cout << C << " Game Description" << endl;
-  cout << "The game has 2 game mode. Player vs NPC or player vs Player." << "\n" << endl;
-  cout << "A 25 x 25 map will be generated. There will be two castles in each of the diagonal corner." << "\n" << endl;
+  cout << "This game is a Player vs Player game." << "\n" << endl;
+  cout << "A 100 x 50 map will be generated. There will be two castles in each of the diagonal corner." << "\n" << endl;
   cout << "Random paths will be created which connects the castle of the first player to that of the second player." << "\n" << endl;
   cout << "Players have to compete with each other to gain full control of the kingdom." << "\n" << endl;
   cout << "\n""\n";
@@ -90,8 +91,46 @@ void game_rules()
   cout << "\n""\n";
 }
 
+void dead_message(int x)
+{
+  if (x == 1) {
+    cout << E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E << endl;
+    for (int i = 0; i < 14; ++i) {
+      cout << "\n";
+    }
+    cout <<
+    R"(
+      ###########  ##                 ##       ##      ##  ###########  ###########       ####
+      ##       ##  ##                ####       ##    ##   ##           ##       ##     ### ##
+      ##       ##  ##               ##  ##       ##  ##    ##           ##       ##    ###  ##
+      ###########  ##              ##    ##       ####     ###########  ###########         ##
+      ##           ##             ##########       ##      ##           ## ####             ##
+      ##           ##            ##        ##      ##      ##           ##   ####           ##
+      ##           ###########  ##          ##     ##      ###########  ##     ####    ###########
+
+
+
+
+
+
+        ##########  ###########         #########     ###########        ##        #########
+            ##      ##                  ##      ##    ##                ####       ##      ##
+            ##      ##                  ##       ##   ##               ##  ##      ##       ##
+            ##      ###########         ##        ##  ###########     ##    ##     ##        ##
+            ##               ##         ##       ##   ##             ##########    ##       ##
+            ##               ##         ##      ##    ##            ##        ##   ##      ##
+        ##########  ###########         #########     ###########  ##          ##  #########
+    )" << endl;
+    for (int i = 0; i < 14; ++i) {
+      cout << "\n";
+    }
+    cout << E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E << endl;
+  }
+}
+
 int main()
 {
   game_title();
   game_rules();
+  dead_message(1);
 }
