@@ -8,8 +8,8 @@
 #include <time.h>
 
 using namespace std;
-int main() {
-
+void create_map()
+{
   //map size of 75*75
 
   const int SIZE_X = 100 - 1;

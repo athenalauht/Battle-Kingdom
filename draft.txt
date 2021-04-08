@@ -55,4 +55,8 @@ display.h
 
   game_title()
   -- display game title
+
+  dead_message()
+  
+  compass()
 -----------------------------------

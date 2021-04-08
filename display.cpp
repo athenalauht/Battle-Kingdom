@@ -169,11 +169,3 @@ void compass()
   cout << "W" << " " << CROSS << " " << "E" << endl;
   cout << "  " << "S" << endl;
 }
-int main()
-{
-  game_title();
-  game_rules();
-  dead_message(1);
-  dead_message(2);
-  compass();
-}
