@@ -126,11 +126,44 @@ void dead_message(int x)
     }
     cout << E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E << endl;
   }
+  else {
+    cout << E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E << endl;
+    for (int i = 0; i < 14; ++i) {
+      cout << "\n";
+    }
+    cout <<
+    R"(
+      ###########  ##                 ##       ##      ##  ###########  ###########    ###########
+      ##       ##  ##                ####       ##    ##   ##           ##       ##             ##
+      ##       ##  ##               ##  ##       ##  ##    ##           ##       ##             ##
+      ###########  ##              ##    ##       ####     ###########  ###########    ###########
+      ##           ##             ##########       ##      ##           ## ####        ##
+      ##           ##            ##        ##      ##      ##           ##   ####      ##
+      ##           ###########  ##          ##     ##      ###########  ##     ####    ###########
+
+
+
+
+
+
+        ##########  ###########         #########     ###########        ##        #########
+            ##      ##                  ##      ##    ##                ####       ##      ##
+            ##      ##                  ##       ##   ##               ##  ##      ##       ##
+            ##      ###########         ##        ##  ###########     ##    ##     ##        ##
+            ##               ##         ##       ##   ##             ##########    ##       ##
+            ##               ##         ##      ##    ##            ##        ##   ##      ##
+        ##########  ###########         #########     ###########  ##          ##  #########
+    )" << endl;
+    for (int i = 0; i < 14; ++i) {
+      cout << "\n";
+    }
+    cout << E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E << endl;
+  }
 }
 
 int main()
 {
   game_title();
   game_rules();
-  dead_message(1);
+  dead_message(2);
 }
