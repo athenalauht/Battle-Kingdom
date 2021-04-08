@@ -46,5 +46,13 @@ battle_result()
 domination_result()
 -- result of a player successfully entered others Emperor
 
-game_rules()
--- display game rules
+-----------------------------------
+display.cpp
+display.h
+
+  game_rules()
+  -- display game rules
+
+  game_title()
+  -- display game title
+-----------------------------------
