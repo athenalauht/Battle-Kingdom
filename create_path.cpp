@@ -15,7 +15,8 @@ int main() {
   const int SIZE_X = 100 - 1;
   const int SIZE_Y = 25 - 1;
 
-  //random generate paths connecting left and right border
+  //random generate paths connecting (2,2) and (SIZE-2, SIZE-2)
+  //first path start from (2,2)
   //random generate the direction by taking:
   // 0 as North, 1 as East, 2 as South, 3 as West
   // step with 0 - 10, with high probabilty for 0(2),6,7,8
@@ -32,14 +33,7 @@ int main() {
 
   srand (time(NULL));
 
-
-
-  int starting_x, starting_y;
-
-  //random generate starting point on left border
-  starting_y = rand() % (SIZE_Y - 3 ) + 2;
-
-  int cur_x = 2, cur_y = starting_y;
+  int cur_x = 2, cur_y = 2;
 
   int temp_step, step;
   int temp_cur_x, temp_cur_y;
@@ -48,9 +42,7 @@ int main() {
   path << cur_y << " " << cur_x<< '\n';
 
 
-
-  //stop once reach right border
-  while ((temp_cur_x <= SIZE_X - 2)){
+  while ((cur_x != SIZE_X - 2) || (cur_y != SIZE_Y - 2)){
 
     temp_step = rand() % 16;
 
@@ -79,7 +71,7 @@ int main() {
 
     }
 
-    temp_dir = rand() % 5;
+    temp_dir = rand() % 7;
 
     //North
     if (temp_dir == 0){
@@ -98,7 +90,7 @@ int main() {
     }
 
     //South
-    else if (temp_dir == 2){
+    else if ((temp_dir == 2) || (temp_dir == 6)){
 
       temp_cur_x = cur_x;
       temp_cur_y = cur_y + step;
@@ -116,7 +108,7 @@ int main() {
     if ((temp_cur_x <= SIZE_X - 2) && (temp_cur_y <= SIZE_Y - 2) && (temp_cur_x >= 2) && (temp_cur_y >= 2)){
 
 
-      //North store
+      //North
       if (temp_dir == 0){
 
         for (int p = temp_cur_y; p < cur_y + 1; ++p){
@@ -131,8 +123,8 @@ int main() {
 
       }
 
-      //East store
-      else if ((temp_dir == 1) || (temp_dir == 4)){
+      //East
+      else if ((temp_dir == 1)){
 
         for (int p = cur_x; p < temp_cur_x + 1; ++p){
 
@@ -147,8 +139,8 @@ int main() {
 
       }
 
-      //South store
-      else if (temp_dir == 2){
+      //South
+      else if ((temp_dir == 2)){
 
         for (int p = cur_y; p < temp_cur_y + 1; ++p){
 
@@ -163,7 +155,7 @@ int main() {
 
       }
 
-      //West store
+      //West
       else if (temp_dir == 3){
 
         for (int p = temp_cur_x; p < cur_x + 1; ++p){
@@ -186,14 +178,6 @@ int main() {
 
 
 
-  //do East for the following
-
-  for (int p = temp_cur_x; p < SIZE_X - 2 + 1; ++p){
-
-    path << cur_y << " ";
-    path << p << '\n';
-
-  }
 
 
 
@@ -203,6 +187,5 @@ int main() {
   //player 1 initial chess stays at (0,0),(0,1),(1,0),(1,1)
   //player 2 initial chess stays at (SIZE,SIZE), (SIZE,SIZE-1), (SIZE-1,SIZE),(SIZE-1,SIZE-1)
 
-  //avalible limit : 2 to SIZE - 2, meaning = rand() % (SIZE - 3 ) + 2
 
 }
