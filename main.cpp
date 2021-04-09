@@ -8,7 +8,7 @@ int main()
 {
   game_title();
   game_rules();
-  dead_message();
+  dead_message(1);
   compass();
 
   create_path();
