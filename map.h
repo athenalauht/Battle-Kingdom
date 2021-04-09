@@ -1,6 +1,6 @@
 #ifndef map_H
 #define map_H
-#include "create_map.cpp"
+#include "create_path.cpp"
 
 void create_map();
 
