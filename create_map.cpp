@@ -22,11 +22,22 @@ int main() {
   //divided into eight part, increase the prob of going west and south
 
 
-
-  int cur_x = 2, cur_y = 2;
   int temp_cur_x, temp_cur_y;
   int dir = -1;                       //init direction
   int temp_rand;
+  //map of the above size
+  int map[25][100];
+
+  for (int y = 0; y < SIZE_Y + 1; ++y){
+
+    for (int x = 0; x < SIZE_X + 1; ++x){
+
+      map[y][x] = 0;
+
+    }
+
+  }
+
 
 
   //open path.txt
@@ -36,32 +47,36 @@ int main() {
   path << "2 2\n";
   srand (time(NULL));
 
-  cur_x = 2, cur_y = 2;
+  int cur_x = 2, cur_y = 2;
 
   while ((cur_x != SIZE_X - 2) || (cur_y != SIZE_Y - 2)){
 
-    temp_rand = rand() % 9;
+    temp_rand = rand() % 8;
+
     switch (temp_rand){
 
       case 0:
       case 6:
       temp_cur_y = cur_y - 1;
+      temp_cur_x = cur_x;
       break;
 
       case 1:
       case 4:
       case 7:
-      case 8:
       temp_cur_x = cur_x + 1;
+      temp_cur_y = cur_y;
       break;
 
       case 2:
       case 5:
       temp_cur_y = cur_y + 1;
+      temp_cur_x = cur_x;
       break;
 
       case 3:
       temp_cur_x = cur_x - 1;
+      temp_cur_y = cur_y;
       break;
 
       }
@@ -71,8 +86,34 @@ int main() {
         cur_x = temp_cur_x;
         cur_y = temp_cur_y;
 
+        map[cur_y][cur_x] = 1;
+
+
+
         path << cur_x << " ";
         path << cur_y << '\n';
+
+
+        //prevent double route
+        if ((map[temp_cur_y][temp_cur_x - 1] != 1) || (map[temp_cur_y + 1][temp_cur_x - 1] != 1) || (map[temp_cur_y + 1][temp_cur_x] != 1)){
+
+          if ((map[temp_cur_y][temp_cur_x + 1] != 1) || (map[temp_cur_y + 1][temp_cur_x + 1] != 1) || (map[temp_cur_y + 1][temp_cur_x] != 1)){
+
+            if ((map[temp_cur_y][temp_cur_x - 1] != 1) || (map[temp_cur_y - 1][temp_cur_x - 1] != 1) || (map[temp_cur_y - 1][temp_cur_x] != 1)){
+
+              if ((map[temp_cur_y][temp_cur_x + 1] != 1) || (map[temp_cur_y - 1][temp_cur_x + 1] != 1) || (map[temp_cur_y - 1][temp_cur_x] != 1)){
+
+
+                ;
+
+
+              }
+
+            }
+
+          }
+
+        }
 
 
       }
@@ -81,49 +122,6 @@ int main() {
     }
 
 
-      cur_x = 2, cur_y = 2;
-
-      while ((cur_x != SIZE_X - 2) || (cur_y != SIZE_Y - 2)){
-
-        temp_rand = rand() % 9;
-        switch (temp_rand){
-
-          case 0:
-          case 6:
-          temp_cur_y = cur_y - 1;
-          break;
-
-          case 1:
-          case 4:
-          case 7:
-          case 8:
-          temp_cur_x = cur_x + 1;
-          break;
-
-          case 2:
-          case 5:
-          temp_cur_y = cur_y + 1;
-          break;
-
-          case 3:
-          temp_cur_x = cur_x - 1;
-          break;
-
-          }
-
-          if ((temp_cur_x <= SIZE_X - 2) && (temp_cur_y <= SIZE_Y - 2) && (temp_cur_x >= 2) && (temp_cur_y >= 2)){
-
-            cur_x = temp_cur_x;
-            cur_y = temp_cur_y;
-
-            path << cur_x << " ";
-            path << cur_y << '\n';
-
-
-          }
-
-
-        }
 
 
   path.close();

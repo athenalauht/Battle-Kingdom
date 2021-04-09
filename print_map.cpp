@@ -43,12 +43,12 @@ int main() {
   int index_x, index_y;  //storing x and y
   int temp_x, temp_y;
 
-  while(path >> index_x){
+  while(path >> index_y){
 
-    temp_x = index_x;
-
-    path >> index_y;
     temp_y = index_y;
+
+    path >> index_x;
+    temp_x = index_x;
 
     map[temp_y][temp_x] = '0';
 
