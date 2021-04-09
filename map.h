@@ -1,7 +1,7 @@
 #ifndef map_H
 #define map_H
-#include "create_path.cpp"
+#include "map.cpp"
 
-void create_map();
+void create_path();
 
 #endif

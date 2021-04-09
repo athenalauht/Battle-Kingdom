@@ -11,5 +11,5 @@ int main()
   dead_message();
   compass();
 
-  create_map();
+  create_path();
 }

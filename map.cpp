@@ -1,191 +1,209 @@
-#include <iostream>
-#include <cctype>
-#include <string>
-#include <fstream>
-#include <sstream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 
-using namespace std;
-int main() {
+ #include <iostream>
+ #include <cctype>
+ #include <string>
+ #include <fstream>
+ #include <sstream>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <time.h>
 
-  //map size of 75*75
+ using namespace std;
+ void create_path() {
 
-  const int SIZE_X = 100 - 1;
-  const int SIZE_Y = 25 - 1;
+   //map size of 75*75
 
-  //random generate paths connecting (2,2) and (SIZE-2, SIZE-2)
-  //first path start from (2,2)
-  //random generate the direction by taking:
-  // 0 as North, 1 as East, 2 as South, 3 as West
-  // step with 0 - 10, with high probabilty for 0(2),6,7,8
-  //divided into eight part, increase the prob of going west and south
+   const int SIZE_X = 100 - 1;
+   const int SIZE_Y = 25 - 1;
 
-  int temp_rand;
+   //random generate paths connecting left and right border
+   //random generate the direction by taking:
+   // 0 as North, 1 as East, 2 as South, 3 as West
+   // step with 0 - 10, with high probabilty for 0(2),6,7,8
+   //divided into eight part, increase the prob of going west and south
 
-  //map of the above size
-  int map[25][100];
+   int temp_rand;
 
-  //open path.txt
-  ofstream path;
-  path.open("path.txt");
+   //map of the above size
+   int map[25][100];
 
-  srand (time(NULL));
+   //open path.txt
+   ofstream path;
+   path.open("path.txt");
 
-  int cur_x = 2, cur_y = 2;
+   srand (time(NULL));
 
-  int temp_step, step;
-  int temp_cur_x, temp_cur_y;
-  int temp_dir;
 
-  path << cur_y << " " << cur_x<< '\n';
 
+   int starting_x, starting_y;
 
-  while ((cur_x != SIZE_X - 2) || (cur_y != SIZE_Y - 2)){
+   //random generate starting point on left border
+   starting_y = rand() % (SIZE_Y - 3 ) + 2;
 
-    temp_step = rand() % 16;
+   int cur_x = 2, cur_y = starting_y;
 
-    switch(temp_step){
+   int temp_step, step;
+   int temp_cur_x, temp_cur_y;
+   int temp_dir;
 
-      case 11:
-      case 12:
-        step = 0;
-        break;
+   path << cur_y << " " << cur_x<< '\n';
 
-      case 13:
-        step = 6;
-        break;
 
-      case 14:
-        step = 7;
-        break;
 
-      case 15:
-        step = 8;
-        break;
+   //stop once reach right border
+   while ((temp_cur_x <= SIZE_X - 2)){
 
-      default:
-        step = temp_step;
-        break;
+     temp_step = rand() % 16;
 
-    }
+     switch(temp_step){
 
-    temp_dir = rand() % 7;
+       case 11:
+       case 12:
+         step = 0;
+         break;
 
-    //North
-    if (temp_dir == 0){
+       case 13:
+         step = 6;
+         break;
 
-      temp_cur_x = cur_x;
-      temp_cur_y = cur_y - step;
+       case 14:
+         step = 7;
+         break;
 
-    }
+       case 15:
+         step = 8;
+         break;
 
-    //East
-    else if ((temp_dir == 1) || (temp_dir == 4)){
+       default:
+         step = temp_step;
+         break;
 
-      temp_cur_x = cur_x + step;
-      temp_cur_y = cur_y;
+     }
 
-    }
+     temp_dir = rand() % 5;
 
-    //South
-    else if ((temp_dir == 2) || (temp_dir == 6)){
+     //North
+     if (temp_dir == 0){
 
-      temp_cur_x = cur_x;
-      temp_cur_y = cur_y + step;
+       temp_cur_x = cur_x;
+       temp_cur_y = cur_y - step;
 
-    }
+     }
 
-    //West
-    else if (temp_dir == 3){
+     //East
+     else if ((temp_dir == 1) || (temp_dir == 4)){
 
-      temp_cur_x = cur_x - step;
-      temp_cur_y = cur_y;
+       temp_cur_x = cur_x + step;
+       temp_cur_y = cur_y;
 
-    }
+     }
 
-    if ((temp_cur_x <= SIZE_X - 2) && (temp_cur_y <= SIZE_Y - 2) && (temp_cur_x >= 2) && (temp_cur_y >= 2)){
+     //South
+     else if (temp_dir == 2){
 
+       temp_cur_x = cur_x;
+       temp_cur_y = cur_y + step;
 
-      //North
-      if (temp_dir == 0){
+     }
 
-        for (int p = temp_cur_y; p < cur_y + 1; ++p){
+     //West
+     else if (temp_dir == 3){
 
-          path << p << " ";
-          path << cur_x << '\n';
+       temp_cur_x = cur_x - step;
+       temp_cur_y = cur_y;
 
-        }
+     }
 
-        cur_x = temp_cur_x;
-        cur_y = temp_cur_y;
+     if ((temp_cur_x <= SIZE_X - 2) && (temp_cur_y <= SIZE_Y - 2) && (temp_cur_x >= 2) && (temp_cur_y >= 2)){
 
-      }
 
-      //East
-      else if ((temp_dir == 1)){
+       //North store
+       if (temp_dir == 0){
 
-        for (int p = cur_x; p < temp_cur_x + 1; ++p){
+         for (int p = temp_cur_y; p < cur_y + 1; ++p){
 
-          path << cur_y << " ";
-          path << p << '\n';
+           path << p << " ";
+           path << cur_x << '\n';
 
-        }
+         }
 
-        cur_x = temp_cur_x;
-        cur_y = temp_cur_y;
+         cur_x = temp_cur_x;
+         cur_y = temp_cur_y;
 
+       }
 
-      }
+       //East store
+       else if ((temp_dir == 1) || (temp_dir == 4)){
 
-      //South
-      else if ((temp_dir == 2)){
+         for (int p = cur_x; p < temp_cur_x + 1; ++p){
 
-        for (int p = cur_y; p < temp_cur_y + 1; ++p){
+           path << cur_y << " ";
+           path << p << '\n';
 
-          path << p << " ";
-          path << cur_x << '\n';
+         }
 
-        }
+         cur_x = temp_cur_x;
+         cur_y = temp_cur_y;
 
-        cur_x = temp_cur_x;
-        cur_y = temp_cur_y;
 
+       }
 
-      }
+       //South store
+       else if (temp_dir == 2){
 
-      //West
-      else if (temp_dir == 3){
+         for (int p = cur_y; p < temp_cur_y + 1; ++p){
 
-        for (int p = temp_cur_x; p < cur_x + 1; ++p){
+           path << p << " ";
+           path << cur_x << '\n';
 
-          path << cur_y << " ";
-          path << p << '\n';
+         }
 
-        }
+         cur_x = temp_cur_x;
+         cur_y = temp_cur_y;
 
-        cur_x = temp_cur_x;
-        cur_y = temp_cur_y;
 
+       }
 
-      }
+       //West store
+       else if (temp_dir == 3){
 
+         for (int p = temp_cur_x; p < cur_x + 1; ++p){
 
-    }
+           path << cur_y << " ";
+           path << p << '\n';
 
-  }
+         }
 
+         cur_x = temp_cur_x;
+         cur_y = temp_cur_y;
 
 
+       }
 
 
+     }
 
-  path.close();
+   }
 
-  //player start from (2,2)
-  //player 1 initial chess stays at (0,0),(0,1),(1,0),(1,1)
-  //player 2 initial chess stays at (SIZE,SIZE), (SIZE,SIZE-1), (SIZE-1,SIZE),(SIZE-1,SIZE-1)
 
 
-}
+   //do East for the following
+
+   for (int p = cur_x; p < SIZE_X - 2 + 1; ++p){
+
+     path << cur_y << " ";
+     path << p << '\n';
+
+   }
+
+
+
+   path.close();
+
+   //player start from (2,2)
+   //player 1 initial chess stays at (0,0),(0,1),(1,0),(1,1)
+   //player 2 initial chess stays at (SIZE,SIZE), (SIZE,SIZE-1), (SIZE-1,SIZE),(SIZE-1,SIZE-1)
+
+   //avalible limit : 2 to SIZE - 2, meaning = rand() % (SIZE - 3 ) + 2
+
+ }
