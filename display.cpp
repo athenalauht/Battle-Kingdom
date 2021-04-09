@@ -37,7 +37,7 @@ void game_rules()
 {
   cout << C << " Game Description" << endl;
   cout << "This game is a Player vs Player game." << "\n" << endl;
-  cout << "A 100 x 50 map will be generated. There will be two castles in each of the diagonal corner." << "\n" << endl;
+  cout << "A 100 x 25 map will be generated. There will be two castles in each of the diagonal corner." << "\n" << endl;
   cout << "Random paths will be created which connects the castle of the first player to that of the second player." << "\n" << endl;
   cout << "Players have to compete with each other to gain full control of the kingdom." << "\n" << endl;
   cout << "\n""\n";
@@ -93,7 +93,7 @@ void dead_message(int x)
 {
   if (x == 1) {
     cout << E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E << endl;
-    for (int i = 0; i < 13; ++i) {
+    for (int i = 0; i < 3; ++i) {
       cout << "\n";
     }
     cout <<
@@ -110,9 +110,6 @@ void dead_message(int x)
 
 
 
-
-
-
         ##########  ###########         #########     ###########        ##        #########
             ##      ##                  ##      ##    ##                ####       ##      ##
             ##      ##                  ##       ##   ##               ##  ##      ##       ##
@@ -121,14 +118,14 @@ void dead_message(int x)
             ##               ##         ##      ##    ##            ##        ##   ##      ##
         ##########  ###########         #########     ###########  ##          ##  #########
     )" << endl;
-    for (int i = 0; i < 13; ++i) {
+    for (int i = 0; i < 3; ++i) {
       cout << "\n";
     }
     cout << E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E << endl;
   }
   else {
     cout << E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E << endl;
-    for (int i = 0; i < 13; ++i) {
+    for (int i = 0; i < 3; ++i) {
       cout << "\n";
     }
     cout <<
@@ -145,9 +142,6 @@ void dead_message(int x)
 
 
 
-
-
-
         ##########  ###########         #########     ###########        ##        #########
             ##      ##                  ##      ##    ##                ####       ##      ##
             ##      ##                  ##       ##   ##               ##  ##      ##       ##
@@ -156,7 +150,7 @@ void dead_message(int x)
             ##               ##         ##      ##    ##            ##        ##   ##      ##
         ##########  ###########         #########     ###########  ##          ##  #########
     )" << endl;
-    for (int i = 0; i < 13; ++i) {
+    for (int i = 0; i < 3; ++i) {
       cout << "\n";
     }
     cout << E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E << endl;
