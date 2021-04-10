@@ -1,5 +1,5 @@
 // Group Project -- Group 13
-// Description: 
+// Description:
  #include <iostream>
  #include <cctype>
  #include <string>
