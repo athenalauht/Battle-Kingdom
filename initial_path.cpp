@@ -14,24 +14,15 @@
 
 using namespace std;
 
-void initial_path(){
+void initial_path(map[25][100]){
 
   const int SIZE_X = 100;
   const int SIZE_Y = 25;
 
-  //map of the above size
 
-
+  //read file
   ifstream path;
   path.open("path.txt");
-
-  //path is not created or have error
-  if (path.fail()){
-
-    return -1;
-
-  }
-
 
 
   //drawing the path
@@ -50,10 +41,12 @@ void initial_path(){
 
   }
 
+
   //border making x = 0 to 1 and x = SIZE-1 to SIZE
   //same for y
 
   //for upper border
+
   for (int y = 0; y < 2; ++y){
 
     for (int x = 0; x < SIZE_X; ++x){
@@ -64,7 +57,9 @@ void initial_path(){
 
   }
 
+
   //for left border
+
   for (int x = 0; x < 1 + 1; ++x){
 
     for (int y = 0; y < SIZE_Y; ++y){
@@ -75,7 +70,9 @@ void initial_path(){
 
   }
 
+
   //for lower border
+
   for (int y = SIZE_Y - 2; y < SIZE_Y; ++y){
 
     for (int x = 0; x < SIZE_X; ++x){
@@ -86,7 +83,9 @@ void initial_path(){
 
   }
 
+
   //for right border
+
   for (int x = SIZE_X - 2; x < SIZE_X; ++x){
 
     for (int y = 0; y < SIZE_Y; ++y){
@@ -96,5 +95,22 @@ void initial_path(){
     }
 
   }
+
+  //put chess into place (inital state)
+
+  //player 1
+
+  map[0][0] = 3
+  map[0][1] = 3
+  map[1][0] = 3
+  map[1][1] = 3
+
+  //player 2
+
+  map[SIZE_Y - 2][SIZE_X - 2] = 4
+  map[SIZE_Y - 2][SIZE_X - 1] = 4
+  map[SIZE_Y - 1][SIZE_X - 2] = 4
+  map[SIZE_Y - 1][SIZE_X - 1] = 4
+
 
 }
