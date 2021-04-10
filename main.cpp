@@ -34,13 +34,14 @@ int main()
 
 
   //display to player before game
-  
+
   game_title();
   game_rules();
+  compass();
 
   //--------------------------------------------
 
   dead_message(1);
-  compass();
+
   create_path();
 }
