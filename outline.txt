@@ -1,0 +1,19 @@
+-----------------------------------
+display.cpp
+display.h
+
+  game_rules()
+  -- display game rules
+
+  game_title()
+  -- display game title
+
+  dead_message()
+
+  compass()
+-----------------------------------
+map.cpp
+map.h
+
+  create_path()
+  --store path value in path.txt
