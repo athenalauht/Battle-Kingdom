@@ -73,10 +73,6 @@ int main()
 
   cout << "This is the initial map setting. Player 1 will first start his/her round" << endl;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 2ea9f76614ff0e11ef56b1200f2c9885645d2024
   player[1].emperor_x = 0;
   player[1].emperor_y = 0;
   player[1].knight_x = 0;
