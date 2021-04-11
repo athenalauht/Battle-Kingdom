@@ -14,6 +14,8 @@
 #define P1_COVERED "\u25CF"
 #define P2_COVERED "\u25CB"
 
+#define TELEPORT "\u2298"
+
 #define EMPEROR "\u2654"
 #define KNIGHT "\u2658"
 #define SOLDIER "\u2659"
@@ -343,6 +345,10 @@ void print_map( int map[][100]) {
 
         case 8:
           cout <<  ASSASSIN;
+          break;
+          
+        case 9:
+          cout << TELEPORT;
           break;
 
       }

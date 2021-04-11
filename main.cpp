@@ -19,6 +19,8 @@
 #define P1_COVERED "\u25CF"
 #define P2_COVERED "\u25CB"
 
+#define TELEPORT "\u2298"
+
 #define EMPEROR "\u2654"
 #define KNIGHT "\u2658"
 #define SOLDIER "\u2659"
@@ -65,7 +67,7 @@ int main()
 
   create_path();
   initial_path(map);
-  create_teleport(teleport_1, teleport_2);
+  create_teleport(teleport_1, teleport_2,map);
 
   //--------------------------------------------
 
