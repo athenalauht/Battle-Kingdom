@@ -40,6 +40,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100] )
   cout << "which chess would you like to move?" << endl;
   cout << "Emperor / Knight / Soldier / Assassin" << endl;
   cout << "Type (E / K / S / A) to move, T to save and terminate the game" << endl;
+  cout << "\n" << endl;
   cin >> chosen_chess;
 
   switch (chosen_chess) {
@@ -77,6 +78,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100] )
 
           cout << "your chosen chess is deployed for the first time. No further moves" << endl;
           cout << "your chess identity will be hidden now" << endl;
+          cout << endl;
 
           map[player[1].emperor_y][player[1].emperor_x] = 3;
         }
@@ -97,7 +99,10 @@ bool player1_interface( int player1_starting_point[2], int map[][100] )
 
   }
 
-
+  char response;
+  cout << "Player 1, are you ready?" << endl;
+  cout << "Press Y to pass the control to player 2" << endl;
+  cin >> response;
 
   return false;
 }

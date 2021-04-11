@@ -110,7 +110,6 @@ int main()
       break;
     }
   }
-
   // to start the game
   int count = 1;
   bool termination = false;
