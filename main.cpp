@@ -10,8 +10,6 @@
 #include <time.h>
 #include "display.h"
 #include "map.h"
-#include "initial_path.h"
-#include "print_map.h"
 
 #define PATH "\u2591"
 #define BORDER "\u2588"
@@ -24,8 +22,6 @@
 #define ASSASSIN "\u2657"
 
 using namespace std;
-
-
 
 int main()
 {
@@ -47,6 +43,11 @@ int main()
 
     }
 
+  //initialize the teleport array / position
+  int teleport_1[2];
+  int teleport_2[2];
+
+
   //--------------------------------------------
 
   //display to player before game
@@ -59,7 +60,7 @@ int main()
 
   // dead_message(1);
 
-
+  //--------------------------------------------
   create_path();
   initial_path(map);
 

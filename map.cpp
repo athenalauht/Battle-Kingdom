@@ -9,6 +9,16 @@
 #include <stdlib.h>
 #include <time.h>
 
+#define PATH "\u2591"
+#define BORDER "\u2588"
+#define P1_COVERED "\u25CF"
+#define P2_COVERED "\u25CB"
+
+#define EMPEROR "\u2654"
+#define KNIGHT "\u2658"
+#define SOLDIER "\u2659"
+#define ASSASSIN "\u2657"
+
 using namespace std;
 
 void create_path() {
@@ -207,5 +217,172 @@ void create_path() {
  //player 2 initial chess stays at (SIZE,SIZE), (SIZE,SIZE-1), (SIZE-1,SIZE),(SIZE-1,SIZE-1)
 
  //avalible limit : 2 to SIZE - 2, meaning = rand() % (SIZE - 3 ) + 2
+
+}
+
+void initial_path( int map[][100]){
+
+  const int SIZE_X = 100;
+  const int SIZE_Y = 25;
+
+
+  //read file
+  ifstream path;
+  path.open("path.txt");
+
+
+  //drawing the path
+
+  int index_x, index_y;  //storing x and y
+  int temp_x, temp_y;
+
+  while(path >> index_y){
+
+    temp_y = index_y;
+
+    path >> index_x;
+    temp_x = index_x;
+
+    map[temp_y][temp_x] = 1;
+
+  }
+
+
+  //border making x = 0 to 1 and x = SIZE-1 to SIZE
+  //same for y
+
+  //for upper border
+
+  for (int y = 0; y < 2; ++y){
+
+    for (int x = 0; x < SIZE_X; ++x){
+
+      map[y][x] = 2;
+
+    }
+
+  }
+
+
+  //for left border
+
+  for (int x = 0; x < 1 + 1; ++x){
+
+    for (int y = 0; y < SIZE_Y; ++y){
+
+      map[y][x] = 2;
+
+    }
+
+  }
+
+
+  //for lower border
+
+  for (int y = SIZE_Y - 2; y < SIZE_Y; ++y){
+
+    for (int x = 0; x < SIZE_X; ++x){
+
+      map[y][x] = 2;
+
+    }
+
+  }
+
+
+  //for right border
+
+  for (int x = SIZE_X - 2; x < SIZE_X; ++x){
+
+    for (int y = 0; y < SIZE_Y; ++y){
+
+      map[y][x] = 2;
+
+    }
+
+  }
+
+  //put chess into place (inital state)
+
+  //player 1
+
+  map[0][0] = 3;
+  map[0][1] = 3;
+  map[1][0] = 3;
+  map[1][1] = 3;
+
+  //player 2
+
+  map[SIZE_Y - 2][SIZE_X - 2] = 4;
+  map[SIZE_Y - 2][SIZE_X - 1] = 4;
+  map[SIZE_Y - 1][SIZE_X - 2] = 4;
+  map[SIZE_Y - 1][SIZE_X - 1] = 4;
+
+
+}
+
+void print_map( int map[][100]) {
+
+  const int SIZE_X = 100;
+  const int SIZE_Y = 25;
+
+
+  // print map
+  for (int y = 0; y < SIZE_Y; ++y){
+
+    for (int x = 0; x < SIZE_X; ++x){
+
+
+      switch(map[y][x]){
+
+        case 0:
+          cout << " ";
+          break;
+
+        case 1:
+          cout << PATH;
+          break;
+
+        case 2:
+          cout << BORDER;
+          break;
+
+        case 3:
+          cout << P1_COVERED;
+          break;
+
+        case 4:
+          cout << P2_COVERED;
+          break;
+
+        case 5:
+          cout <<  EMPEROR;
+          break;
+
+        case 6:
+          cout <<  KNIGHT;
+          break;
+
+        case 7:
+          cout <<  SOLDIER;
+          break;
+
+        case 8:
+          cout <<  ASSASSIN;
+          break;
+
+      }
+
+
+    }
+
+    cout << '\n';
+
+  }
+
+
+
+
+
 
 }

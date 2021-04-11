@@ -1,7 +1,5 @@
 // Group Project -- Group 13
 // Description: programme that generate a teleport in the map
-//              final output is stored into the array of map
-//              history of teleport is put into a dynamic array (prevent duplication of teleport)
 #include <iostream>
 #include <cctype>
 #include <string>
@@ -14,6 +12,25 @@
 using namespace std;
 
 void create_teleport(){
+
+  //read the path
+  ifstream path;
+  path.open("path.txt");
+
+  //count lines in the file
+  string temp_line;
+  int count = 0;
+
+  srand(time(NULL));
+
+  while (getline(path,temp_line)){
+    count = count + 1;
+  }
+
+
+  //random generate a number from 1 to the max number of lines
+  temp_line = rand() % count + 1;
+
 
 
 
