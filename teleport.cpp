@@ -11,7 +11,7 @@
 
 using namespace std;
 
-void create_teleport( int teleport_1[2], int teleport_2[2]){
+void create_teleport( int teleport_1[2], int teleport_2[2], int map[][100]){
 
   //read the path
   ifstream path;
@@ -76,6 +76,12 @@ void create_teleport( int teleport_1[2], int teleport_2[2]){
   path >> teleport_2[1];
 
   path.close();
+
+  const int SIZE_X = 100;
+  const int SIZE_Y = 25;
+
+  map[teleport_1[0]][teleport_1[1]] = 9;
+  map[teleport_2[0]][teleport_2[1]] = 9;
 
 
 }

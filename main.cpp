@@ -19,6 +19,8 @@
 #define P1_COVERED "\u25CF"
 #define P2_COVERED "\u25CB"
 
+#define TELEPORT "\u2298"
+
 #define EMPEROR "\u2654"
 #define KNIGHT "\u2658"
 #define SOLDIER "\u2659"
@@ -65,12 +67,13 @@ int main()
 
   create_path();
   initial_path(map);
-  create_teleport(teleport_1, teleport_2);
+  create_teleport(teleport_1, teleport_2,map);
 
   //--------------------------------------------
 
   print_map(map);
 
+<<<<<<< HEAD
   player[1].emperor_x = 0;
   player[1].emperor_y = 0;
   player[1].knight_x = 0;
@@ -103,5 +106,39 @@ int main()
       count += 1;
     }
   }
+=======
+  // player[1].emperor_x = 0;
+  // player[1].emperor_y = 0;
+  // player[1].knight_x = 0;
+  // player[1].knight_y = 0;
+  // player[1].soldier_x = 0;
+  // player[1].soldier_y = 0;
+  // player[1].assassin_x = 0;
+  // player[1].assassin_y = 0;
+  //
+  // player[2].emperor_x = 0;
+  // player[2].emperor_y = 0;
+  // player[2].knight_x = 0;
+  // player[2].knight_y = 0;
+  // player[2].soldier_x = 0;
+  // player[2].soldier_y = 0;
+  // player[2].assassin_x = 0;
+  // player[2].assassin_y = 0;
+  //
+  // int count = 1;
+  // bool termination = false;
+  // while (!termination) {
+  //
+  //   if (count % 2 == 0) {
+  //     termination = player2_interface();
+  //     count += 1;
+  //   }
+  //
+  //   else {
+  //     termination = player1_interface();
+  //     count += 1;
+  //   }
+  // }
+>>>>>>> d40c46d51cea38aa6369a1d636d3f6d1d97f31ec
 
 }
