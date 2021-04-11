@@ -12,9 +12,10 @@
 
 
 
+
 using namespace std;
 
-void initial_path(map[25][100]){
+void initial_path( int map[][100]){
 
   const int SIZE_X = 100;
   const int SIZE_Y = 25;
@@ -100,17 +101,17 @@ void initial_path(map[25][100]){
 
   //player 1
 
-  map[0][0] = 3
-  map[0][1] = 3
-  map[1][0] = 3
-  map[1][1] = 3
+  map[0][0] = 3;
+  map[0][1] = 3;
+  map[1][0] = 3;
+  map[1][1] = 3;
 
   //player 2
 
-  map[SIZE_Y - 2][SIZE_X - 2] = 4
-  map[SIZE_Y - 2][SIZE_X - 1] = 4
-  map[SIZE_Y - 1][SIZE_X - 2] = 4
-  map[SIZE_Y - 1][SIZE_X - 1] = 4
+  map[SIZE_Y - 2][SIZE_X - 2] = 4;
+  map[SIZE_Y - 2][SIZE_X - 1] = 4;
+  map[SIZE_Y - 1][SIZE_X - 2] = 4;
+  map[SIZE_Y - 1][SIZE_X - 1] = 4;
 
 
 }

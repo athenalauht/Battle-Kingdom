@@ -10,13 +10,30 @@
 #include <time.h>
 #include "display.h"
 #include "map.h"
+#include "initial_path.h"
+#include "print_map.h"
+
+#define PATH "\u2591"
+#define BORDER "\u2588"
+#define P1_COVERED "\u25CF"
+#define P2_COVERED "\u25CB"
+
+#define EMPEROR "\u2654"
+#define KNIGHT "\u2658"
+#define SOLDIER "\u2659"
+#define ASSASSIN "\u2657"
 
 using namespace std;
+
 
 
 int main()
 {
   //initialize the map
+
+  const int SIZE_X = 100;
+  const int SIZE_Y = 25;
+
 
     int map[25][100];
 
@@ -32,16 +49,20 @@ int main()
 
   //--------------------------------------------
 
-
   //display to player before game
-
-  game_title();
-  game_rules();
-  compass();
+  //
+  // game_title();
+  // game_rules();
+  // compass();
 
   //--------------------------------------------
 
-  dead_message(1);
+  // dead_message(1);
+
 
   create_path();
+  initial_path(map);
+
+  //--------------------------------------------
+  print_map(map);
 }

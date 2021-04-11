@@ -36,3 +36,18 @@ map.h
 
   create_path()
   -- store path value in path.txt
+
+-----------------------------------
+initial_path.cpp
+initial_path.h
+
+  initial_path()
+  --put the path into the array
+    -- include border, path and initial state of chess
+
+-----------------------------------
+print_map.cpp
+print_map.h
+
+  print_map()
+  --according what is in the array, print the array
