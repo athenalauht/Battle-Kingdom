@@ -61,16 +61,15 @@ void create_path() {
  path << cur_y << " " << cur_x<< '\n';
 
 
-
  //stop once reach right border
  while ((temp_cur_x <= SIZE_X - 2)){
 
-   step = rand() % 8;
+   step = rand() % 6;
 
-   temp_dir = rand() % 5;
+   temp_dir = rand() % 9;
 
    //North
-   if (temp_dir == 0){
+   if ((temp_dir == 0) || (temp_dir == 1)){
 
      temp_cur_x = cur_x;
      temp_cur_y = cur_y - step;
@@ -78,7 +77,7 @@ void create_path() {
    }
 
    //East
-   else if ((temp_dir == 1) || (temp_dir == 4)){
+   else if ((temp_dir == 2) || (temp_dir == 3) || (temp_dir == 4)){
 
      temp_cur_x = cur_x + step;
      temp_cur_y = cur_y;
@@ -86,7 +85,7 @@ void create_path() {
    }
 
    //South
-   else if (temp_dir == 2){
+   else if ((temp_dir == 5) || (temp_dir == 6)){
 
      temp_cur_x = cur_x;
      temp_cur_y = cur_y + step;
@@ -94,7 +93,7 @@ void create_path() {
    }
 
    //West
-   else if (temp_dir == 3){
+   else if ((temp_dir == 7) || (temp_dir == 8)){
 
      temp_cur_x = cur_x - step;
      temp_cur_y = cur_y;
@@ -105,7 +104,7 @@ void create_path() {
 
 
      //North store
-     if (temp_dir == 0){
+     if ((temp_dir == 0) || (temp_dir == 1)){
 
        for (int p = temp_cur_y; p < cur_y + 1; ++p){
 
@@ -120,7 +119,7 @@ void create_path() {
      }
 
      //East store
-     else if ((temp_dir == 1) || (temp_dir == 4)){
+     else if ((temp_dir == 2) || (temp_dir == 3) || (temp_dir == 4)){
 
        for (int p = cur_x; p < temp_cur_x + 1; ++p){
 
@@ -136,7 +135,7 @@ void create_path() {
      }
 
      //South store
-     else if (temp_dir == 2){
+     else if ((temp_dir == 5) || (temp_dir == 6)){
 
        for (int p = cur_y; p < temp_cur_y + 1; ++p){
 
@@ -152,7 +151,7 @@ void create_path() {
      }
 
      //West store
-     else if (temp_dir == 3){
+     else if ((temp_dir == 7) || (temp_dir == 8)){
 
        for (int p = temp_cur_x; p < cur_x + 1; ++p){
 
