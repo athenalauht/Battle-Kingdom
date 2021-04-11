@@ -46,6 +46,10 @@ int main()
 
     }
 
+  //initialize the teleport
+  int teleport_1[2];
+  int teleport_2[2];
+
   //--------------------------------------------
 
   //display to player before game
@@ -67,5 +71,5 @@ int main()
   print_map(map);
 
 
-  
+
 }
