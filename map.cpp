@@ -65,32 +65,7 @@ void create_path() {
  //stop once reach right border
  while ((temp_cur_x <= SIZE_X - 2)){
 
-   temp_step = rand() % 16;
-
-   switch(temp_step){
-
-     case 11:
-     case 12:
-       step = 0;
-       break;
-
-     case 13:
-       step = 6;
-       break;
-
-     case 14:
-       step = 7;
-       break;
-
-     case 15:
-       step = 8;
-       break;
-
-     default:
-       step = temp_step;
-       break;
-
-   }
+   step = rand() % 8;
 
    temp_dir = rand() % 5;
 

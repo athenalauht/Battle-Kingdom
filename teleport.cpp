@@ -18,7 +18,7 @@ void create_teleport(){
   path.open("path.txt");
 
   //count lines in the file
-  string temp_line;
+  string temp_line_1, temp_line_2;
   int count = 0;
 
   srand(time(NULL));
@@ -29,7 +29,9 @@ void create_teleport(){
 
 
   //random generate a number from 1 to the max number of lines
-  temp_line = rand() % count + 1;
+  temp_line_1 = rand() % count + 1;
+
+
 
 
 
