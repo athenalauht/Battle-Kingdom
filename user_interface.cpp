@@ -1,5 +1,11 @@
 #include <iostream>
 #include <string>
+#include "map.h"
+
+#define PATH "\u2591"
+#define BORDER "\u2588"
+#define P1_COVERED "\u25CF"
+#define P2_COVERED "\u25CB"
 
 #define EMPEROR "\u2654"
 #define KNIGHT "\u2658"
@@ -7,8 +13,6 @@
 #define ASSASSIN "\u2657"
 
 using namespace std;
-
-
 struct profile
 {
   int emperor_x;
@@ -21,13 +25,32 @@ struct profile
   int assassin_y;
 };
 
-void user_interface()
+profile player[3];
+
+
+
+void player1_interface()
 {
-  
+  bool termination;
+  string chosen_chess;
+
+  cout << "which chess would you like to move?" << endl;
+  cout << "Emperor / Knight / Soldier / Assassin" << endl;
+  cout << "Type (E / K / S / A) for the chess to move, T to save and terminate the game" << endl;
+  cin >> chosen_chess;
+
+  if (chosen_chess == "T") {
+    cout << "The game is ended" << endl;
+    termination = true;
+    break;
+  }
+}
+void player2_interface()
+{
+
 }
 
-
-int main()
-{
-
-}
+// int main()
+// {
+//   void player1_interface();
+// }

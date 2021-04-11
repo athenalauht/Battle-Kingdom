@@ -2,6 +2,7 @@
 #define create_map_H
 #include "user_interface.cpp"
 
-void user_interface();
+void player1_interface();
+void player2_interface();
 
 #endif

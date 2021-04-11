@@ -1,3 +1,5 @@
+// Group Project -- Group 13
+// Description: program to control all the message/display output of the game
 #include <iostream>
 #include <string>
 
