@@ -24,8 +24,6 @@
 
 using namespace std;
 
-bool termination = false;
-
 int main()
 {
   //initialize the map
@@ -66,6 +64,37 @@ int main()
 
   print_map(map);
 
+  player[1].emperor_x = 0;
+  player[1].emperor_y = 0;
+  player[1].knight_x = 0;
+  player[1].knight_y = 0;
+  player[1].soldier_x = 0;
+  player[1].soldier_y = 0;
+  player[1].assassin_x = 0;
+  player[1].assassin_y = 0;
 
-  
+  player[2].emperor_x = 0;
+  player[2].emperor_y = 0;
+  player[2].knight_x = 0;
+  player[2].knight_y = 0;
+  player[2].soldier_x = 0;
+  player[2].soldier_y = 0;
+  player[2].assassin_x = 0;
+  player[2].assassin_y = 0;
+
+  int count = 1;
+  bool termination = false;
+  while (!termination) {
+
+    if (count % 2 == 0) {
+      termination = player2_interface();
+      count += 1;
+    }
+
+    else {
+      termination = player1_interface();
+      count += 1;
+    }
+  }
+
 }

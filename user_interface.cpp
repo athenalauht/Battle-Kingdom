@@ -29,9 +29,8 @@ profile player[3];
 
 
 
-void player1_interface()
+bool player1_interface()
 {
-  bool termination;
   string chosen_chess;
 
   cout << "which chess would you like to move?" << endl;
@@ -41,14 +40,15 @@ void player1_interface()
 
   if (chosen_chess == "T") {
     cout << "The game is ended" << endl;
-    termination = true;
-    break;
+    return true;
   }
-}
-void player2_interface()
-{
 
+  return false;
 }
+// bool player2_interface()
+// {
+//
+// }
 
 // int main()
 // {
