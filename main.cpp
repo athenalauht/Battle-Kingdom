@@ -11,7 +11,7 @@
 #include "display.h"
 #include "map.h"
 #include "teleport.h"
-// #include "user_interface.h"
+#include "user_interface.h"
 
 
 #define PATH "\u2591"
@@ -94,7 +94,7 @@ int main()
   while (!termination) {
 
     if (count % 2 == 0) {
-      termination = player2_interface();
+      // termination = player2_interface();
       count += 1;
     }
 
