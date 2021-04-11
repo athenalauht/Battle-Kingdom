@@ -346,7 +346,7 @@ void print_map( int map[][100]) {
         case 8:
           cout <<  ASSASSIN;
           break;
-          
+
         case 9:
           cout << TELEPORT;
           break;
