@@ -56,8 +56,8 @@ int main()
 
   //display to player before game
   //
-  // game_title();
-  // game_rules();
+  game_title();
+  game_rules();
 
   //--------------------------------------------
 
@@ -71,9 +71,8 @@ int main()
 
   //--------------------------------------------
 
-  print_map(map);
+  cout << "This is the initial map setting. Player 1 will first start his/her round" << endl;
 
-<<<<<<< HEAD
   player[1].emperor_x = 0;
   player[1].emperor_y = 0;
   player[1].knight_x = 0;
@@ -92,53 +91,40 @@ int main()
   player[2].assassin_x = 0;
   player[2].assassin_y = 0;
 
+  // to locate the starting point of each player
+  int player1_starting_point[2];
+  int player2_starting_point[2];
+
+  for (int i = 0; i < 23; ++i) {
+    if (map[i][2] == 1 || map[i][2] == 9) {
+      player1_starting_point[0] = 2;
+      player1_starting_point[1] = i;
+      break;
+    }
+  }
+
+  for (int i = 22; i > 1; --i) {
+    if (map[i][97] == 1 || map[i][2] == 9) {
+      player2_starting_point[0] = 97;
+      player2_starting_point[1] = i;
+      break;
+    }
+  }
+
+  // to start the game
   int count = 1;
   bool termination = false;
   while (!termination) {
 
     if (count % 2 == 0) {
-      // termination = player2_interface();
+      // termination = player2_interface(player2_starting_point[2]);
       count += 1;
     }
 
     else {
-      termination = player1_interface();
+      termination = player1_interface( player1_starting_point, map );
       count += 1;
     }
   }
-=======
-  // player[1].emperor_x = 0;
-  // player[1].emperor_y = 0;
-  // player[1].knight_x = 0;
-  // player[1].knight_y = 0;
-  // player[1].soldier_x = 0;
-  // player[1].soldier_y = 0;
-  // player[1].assassin_x = 0;
-  // player[1].assassin_y = 0;
-  //
-  // player[2].emperor_x = 0;
-  // player[2].emperor_y = 0;
-  // player[2].knight_x = 0;
-  // player[2].knight_y = 0;
-  // player[2].soldier_x = 0;
-  // player[2].soldier_y = 0;
-  // player[2].assassin_x = 0;
-  // player[2].assassin_y = 0;
-  //
-  // int count = 1;
-  // bool termination = false;
-  // while (!termination) {
-  //
-  //   if (count % 2 == 0) {
-  //     termination = player2_interface();
-  //     count += 1;
-  //   }
-  //
-  //   else {
-  //     termination = player1_interface();
-  //     count += 1;
-  //   }
-  // }
->>>>>>> d40c46d51cea38aa6369a1d636d3f6d1d97f31ec
 
 }

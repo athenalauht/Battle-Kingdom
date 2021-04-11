@@ -27,24 +27,81 @@ struct profile
 
 profile player[3];
 
+int player1_starting_point;
 
 
-bool player1_interface()
+bool player1_interface( int player1_starting_point[2], int map[][100] )
 {
-  string chosen_chess;
+  char chosen_chess;
+
+  compass();
+  print_map(map);
 
   cout << "which chess would you like to move?" << endl;
   cout << "Emperor / Knight / Soldier / Assassin" << endl;
-  cout << "Type (E / K / S / A) for the chess to move, T to save and terminate the game" << endl;
+  cout << "Type (E / K / S / A) to move, T to save and terminate the game" << endl;
   cin >> chosen_chess;
 
-  if (chosen_chess == "T") {
-    cout << "The game is ended" << endl;
-    return true;
+  switch (chosen_chess) {
+
+    case 'T':
+      cout << "The game is ended" << endl;
+      return true;
+      break;
+
+    case 'E':
+      if ( ( player[1].emperor_x == 0 ) && ( player[1].emperor_y == 0 ) ) {
+
+        if ( map[player1_starting_point[1]][player1_starting_point[0]] == 1 ) {
+
+          player[1].emperor_x = player1_starting_point[0];
+
+          player[1].emperor_y = player1_starting_point[1];
+
+          map[player[1].emperor_y][player[1].emperor_x] = 5;
+
+          if ( map[0][0] == 3 )
+            map[0][0] = 0;
+
+          else if ( map[0][1] == 3 )
+            map[0][1] = 0;
+
+          else if ( map[1][0] == 3 )
+            map[1][0] = 0;
+
+          else if ( map[1][1] == 3 )
+            map[1][1] = 0;
+
+          compass();
+          print_map(map);
+
+          cout << "your chosen chess is deployed for the first time. No further moves" << endl;
+          cout << "your chess identity will be hidden now" << endl;
+
+          map[player[1].emperor_y][player[1].emperor_x] = 3;
+        }
+
+        else {
+          cout << "The starting point is occupied, please choose another move" << endl;
+        }
+      }
+
+    case 'K':
+      break;
+
+    case 'S':
+      break;
+
+    case 'A':
+      break;
+
   }
+
+
 
   return false;
 }
+
 // bool player2_interface()
 // {
 //

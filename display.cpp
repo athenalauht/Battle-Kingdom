@@ -33,6 +33,7 @@ void game_title()
              ###########  ###########  ##          ##  ###########  ##        ##
   )" << endl;
   cout << "    " << B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B << endl;
+  cout << endl;
 }
 
 void game_rules()
