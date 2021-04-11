@@ -18,7 +18,8 @@ void create_teleport( int teleport_1[2], int teleport_2[2]){
   path.open("path.txt");
 
   //count lines in the file
-  string temp_line_1, temp_line_2;
+  int temp_line_1, temp_line_2;
+  string temp_line;
   int count = 0;
 
   srand(time(NULL));
@@ -51,6 +52,9 @@ void create_teleport( int teleport_1[2], int teleport_2[2]){
     line_2 = temp_line_1;
   }
 
+
+  path.open("path.txt");
+
   int store;
 
   for (int i = 1; i < line_1 * 2 - 1; ++i){
@@ -71,10 +75,7 @@ void create_teleport( int teleport_1[2], int teleport_2[2]){
   path >> teleport_2[0];
   path >> teleport_2[1];
 
-  path.open("path.txt");
-
-
-
+  path.close();
 
 
 }
