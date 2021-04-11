@@ -73,9 +73,5 @@ int main()
 
   print_map(map);
 
-  cout << teleport_1[0]<<endl;
-  cout << teleport_1[1]<<endl;
-  cout << teleport_2[0]<<endl;
-  cout << teleport_2[1]<<endl;
 
 }
