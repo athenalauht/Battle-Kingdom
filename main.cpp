@@ -10,7 +10,9 @@
 #include <time.h>
 #include "display.h"
 #include "map.h"
-#include "user_interface.h"
+#include "teleport.h"
+// #include "user_interface.h"
+
 
 #define PATH "\u2591"
 #define BORDER "\u2588"
@@ -54,8 +56,8 @@ int main()
 
   //display to player before game
   //
-  game_title();
-  game_rules();
+  // game_title();
+  // game_rules();
 
   //--------------------------------------------
 
@@ -65,11 +67,15 @@ int main()
 
   create_path();
   initial_path(map);
+  create_teleport(teleport_1, teleport_2);
 
   //--------------------------------------------
 
   print_map(map);
 
-
+  cout << teleport_1[0]<<endl;
+  cout << teleport_1[1]<<endl;
+  cout << teleport_2[0]<<endl;
+  cout << teleport_2[1]<<endl;
 
 }

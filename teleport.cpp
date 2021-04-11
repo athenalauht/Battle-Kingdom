@@ -18,7 +18,8 @@ void create_teleport( int teleport_1[2], int teleport_2[2]){
   path.open("path.txt");
 
   //count lines in the file
-  string temp_line_1, temp_line_2;
+  int temp_line_1, temp_line_2;
+  string temp_line;
   int count = 0;
 
   srand(time(NULL));
