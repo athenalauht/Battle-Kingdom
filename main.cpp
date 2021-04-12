@@ -124,6 +124,11 @@ int main()
       termination = player1_interface( player1_starting_point, map, teleport_1, teleport_2 );
       count += 1;
     }
+
+    if (count % 3 == 0) {
+      create_teleport(teleport_1, teleport_2, map)
+    }
+    
   }
 
 }
