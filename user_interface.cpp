@@ -93,7 +93,7 @@ void attack( int map[][100], int attacker, int teleport_1[2], int teleport_2[2],
   switch (attack_option) {
     case 'N':
     break;
-    
+
     case 'E':
     for (int i = 1; i <= 5; ++i) {
 
@@ -355,44 +355,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
     case 'E':
       if ( ( player[1].emperor_x == 0 ) && ( player[1].emperor_y == 0 ) ) {
 
-        if ( map[player1_starting_point[1]][player1_starting_point[0]] == 1 ) {
-
-          player[1].emperor_x = player1_starting_point[0];
-
-          player[1].emperor_y = player1_starting_point[1];
-
-          map[player[1].emperor_y][player[1].emperor_x] = 5;
-
-
-          cancel_base_chess();
-          compass();
-          print_map(map);
-          chess_identity();
-
-          cout << "Your chosen chess is deployed for the first time. No further moves" << endl;
-
-          if (check_attack(4, map, player[1].emperor_y, player[1].emperor_x)) {
-            char attack_option;
-            cout << "please choose the direction to attack, or type X to not attack" << endl;
-            cin >> attack_option;
-            if (attack_option == 'X') {
-              goto final;
-            }
-            attack(map, 5, teleport_1, teleport_2, 4, attack_option, player[1].emperor_y, player[1].emperor_x);
-          }
-          else {
-            cout << "you do not have any target to attack" << endl;
-          }
-
-          final:
-          cout << "your chess identity will be hidden now" << endl;
-          cout << endl;
-
-          map[player[1].emperor_y][player[1].emperor_x] = 3;
-
-        }
-
-        else if ( map[player1_starting_point[1]][player1_starting_point[0]] == 9 ) {
+        if ( check_teleporter (player1_starting_point[1], player1_starting_point[0], teleport_1, teleport_2 ) ) {
 
           if ( ( player1_starting_point[1] == teleport_1[0] ) && ( player1_starting_point[0] == teleport_1[1] ) ) {
 
@@ -413,40 +376,53 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
             map[player[1].emperor_y][player[1].emperor_x] = 5;
 
           }
-
-          cancel_base_chess();
-          compass();
-          print_map(map);
-          chess_identity();
-
-          cout << "Your chosen chess is deployed for the first time. No further moves." << endl;
+          cout << "Your chosen chess is deployed for the first time. No further moves" << endl;
           cout << "The starting point of your side contains a teleporter, your chosen chess is being teleported to the other side" << endl;
-
-          if (check_attack(4, map, player[1].emperor_y, player[1].emperor_x)) {
-            char attack_option;
-            cout << "please choose the direction to attack, or type X to not attack" << endl;
-            cin >> attack_option;
-            if (attack_option == 'X') {
-              goto final;
-            }
-            attack(map, 5, teleport_1, teleport_2, 4, attack_option, player[1].emperor_y, player[1].emperor_x);
-          }
-          else {
-            cout << "you do not have any target to attack" << endl;
-          }
-
-          final:
-          cout << "your chess identity will be hidden now" << endl;
-          cout << endl;
-
-          map[player[1].emperor_y][player[1].emperor_x] = 3;
         }
 
+        else  {
+
+          player[1].emperor_x = player1_starting_point[0];
+
+          player[1].emperor_y = player1_starting_point[1];
+
+          map[player[1].emperor_y][player[1].emperor_x] = 5;
+
+          cout << "Your chosen chess is deployed for the first time. No further moves" << endl;
+        }
+
+        cancel_base_chess();
+        compass();
+        print_map(map);
+        chess_identity();
+
+        if (check_attack(4, map, player[1].emperor_y, player[1].emperor_x)) {
+          char attack_option;
+          cout << "please choose the direction to attack, or type X to not attack" << endl;
+          cin >> attack_option;
+          if (attack_option == 'X') {
+            goto final;
+          }
+          attack(map, 5, teleport_1, teleport_2, 4, attack_option, player[1].emperor_y, player[1].emperor_x);
+        }
         else {
+          cout << "you do not have any target to attack" << endl;
+        }
+
+        final:
+        cout << "your chess identity will be hidden now" << endl;
+        cout << endl;
+
+        map[player[1].emperor_y][player[1].emperor_x] = 3;
+
+        }
+
+
+        if ( map[player1_starting_point[1]][player1_starting_point[0]] != 1 && map[player1_starting_point[1]][player1_starting_point[0]] != 9) {
           cout << "The starting point is occupied, please choose another move" << endl;
         }
-
       }
+
 
 
 
