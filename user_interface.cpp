@@ -394,7 +394,6 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
         cancel_base_chess();
         compass();
         print_map(map);
-        chess_identity();
 
         if (check_attack(4, map, player[1].emperor_y, player[1].emperor_x)) {
           char attack_option;
