@@ -331,6 +331,7 @@ void print_map( int map[][100]) {
           cout << P2_COVERED;
           break;
 
+        //player 1
         case 5:
           cout <<  EMPEROR;
           break;
@@ -351,6 +352,7 @@ void print_map( int map[][100]) {
           cout << TELEPORT;
           break;
 
+        //player 2
         case 10:
           cout <<  EMPEROR;
           break;

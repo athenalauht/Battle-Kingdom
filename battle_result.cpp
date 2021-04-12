@@ -12,7 +12,7 @@
 
 using namespace std;
 
-void battle_result(int attack, int defense){
+int battle_result(int attack, int defense){
   int pos_attack = attack;
   int pos_defense = defense - 5;
 

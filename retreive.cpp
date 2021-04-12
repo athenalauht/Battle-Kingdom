@@ -12,7 +12,7 @@
 
 using namespace std;
 
-void retrieve(int map[][100]){
+bool retrieve(int map[][100]){
 
   //retrieve path
   initial_path(map);
@@ -93,5 +93,5 @@ void retrieve(int map[][100]){
   teleport >> teleport_2[1];
   teleport.close();
 
-
+  return 0;
 }
