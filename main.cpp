@@ -67,7 +67,7 @@ int main()
 
   create_path();
   initial_path(map);
-  create_teleport(teleport_1, teleport_2,map);
+  create_teleport(teleport_1, teleport_2, map);
 
   //--------------------------------------------
 
@@ -121,7 +121,7 @@ int main()
     }
 
     else {
-      termination = player1_interface( player1_starting_point, map );
+      termination = player1_interface( player1_starting_point, map, teleport_1, teleport_2 );
       count += 1;
     }
   }

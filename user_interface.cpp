@@ -30,7 +30,7 @@ profile player[3];
 int player1_starting_point;
 
 
-bool player1_interface( int player1_starting_point[2], int map[][100] )
+bool player1_interface( int player1_starting_point[2], int map[][100], int teleport_1[2], int teleport_2[2] )
 {
   char chosen_chess;
 
@@ -73,6 +73,10 @@ bool player1_interface( int player1_starting_point[2], int map[][100] )
           else if ( map[1][1] == 3 )
             map[1][1] = 0;
 
+        if ( map[player1_starting_point[1]][player1_starting_point[0]] == 9 ) {
+
+          if ()
+        }
           compass();
           print_map(map);
 
