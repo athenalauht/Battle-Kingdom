@@ -13,7 +13,8 @@
 #include "map.h"
 #include "teleport.h"
 #include "save.h"
-// #include "user_interface.h"
+#include "user_interface.h"
+#include "battle_result.h"
 
 #define PATH "\u2591"
 #define BORDER "\u2588"
@@ -21,11 +22,11 @@
 #define P2_COVERED "\u25CB"
 
 #define TELEPORT "\u2298"
-
 #define EMPEROR "\u2654"
 #define KNIGHT "\u2658"
 #define SOLDIER "\u2659"
 #define ASSASSIN "\u2657"
+
 
 using namespace std;
 
@@ -127,9 +128,8 @@ int main()
     }
 
     if (count % 3 == 0) {
-      create_teleport(teleport_1, teleport_2, map)
+      create_teleport(teleport_1, teleport_2, map);
     }
 
   }
-
 }
