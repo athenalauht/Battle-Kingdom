@@ -12,7 +12,7 @@
 
 using namespace std;
 
-void store_profile(player[3]){
+void store_profile(int player[3]){
 
   //open p1.txt
   ofstream p1;
@@ -36,5 +36,18 @@ void store_profile(player[3]){
 
   p2.close();
 
+
+}
+
+void store_teleport(int teleport_1[2],int teleport_1[2]){
+
+  //open teleport.txt
+  ofstream teleport;
+  teleport.open("teleport.txt");
+
+  teleport << teleport_1[0] << " " << teleport_1[1] << '\n';
+  teleport << teleport_2[0] << " " << teleport_2[1] << '\n';
+
+  teleport.close();
 
 }

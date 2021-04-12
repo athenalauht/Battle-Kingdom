@@ -377,8 +377,4 @@ void print_map( int map[][100]) {
   }
 
 
-
-
-
-
 }
