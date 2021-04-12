@@ -12,4 +12,25 @@
 
 using namespace std;
 
-void battle_result();
+void battle_result(int attack, int defense){
+  int pos_attack = attack;
+  int pos_defense = defense - 5;
+
+  if ((attack == 5) && (defense == 8)){
+    return defense;
+  }
+  else if ((attack == 8) && (defense == 5)){
+    return attack;
+  }
+  else{
+    if (pos_attack > pos_defense){
+      return defense;
+    }
+    else if (pos_attack < pos_defense){
+      return attack;
+    }
+    else if (pos_attack == pos_defense){
+      return attack;
+    }
+  }
+}
