@@ -32,7 +32,45 @@ struct profile
 };
 
 profile player[3];
-void( )
+
+void cancel_base_chess()
+{
+  if ( map[0][0] == 3 )
+    map[0][0] = 0;
+
+  else if ( map[0][1] == 3 )
+    map[0][1] = 0;
+
+  else if ( map[1][0] == 3 )
+    map[1][0] = 0;
+
+  else if ( map[1][1] == 3 )
+    map[1][1] = 0;
+}
+
+void check_attack( int map[][100], int a, int b)
+{
+  // check for possible horizontal left attack
+
+  for ( int i = map[player[1].emperor_x]; i >= map[player[1].emperor_x] - 5; --i ) {
+
+    if ( a <= map[player[1].emperor_y][i] <= b ) {
+
+      for ( int j = map[player[1].emperor_x] - 1; j >= i + 1 ) {
+
+        if ( map[player[1].emperor_y][j] != 1 && map[player[1].emperor_y][j] != 9 ) {
+
+          goto check_fin_1;
+        }
+      }
+      int attack = 5
+    }
+  }
+
+  check_fin_1:
+
+  // check for possible vertical attack
+}
 
 bool player1_interface( int player1_starting_point[2], int map[][100], int teleport_1[2], int teleport_2[2] )
 {
@@ -66,30 +104,15 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
 
           map[player[1].emperor_y][player[1].emperor_x] = 5;
 
-          if ( map[0][0] == 3 )
-            map[0][0] = 0;
 
-          else if ( map[0][1] == 3 )
-            map[0][1] = 0;
-
-          else if ( map[1][0] == 3 )
-            map[1][0] = 0;
-
-          else if ( map[1][1] == 3 )
-            map[1][1] = 0;
-
+          cancel_base_chess();
           compass();
           print_map(map);
 
           cout << "Your chosen chess is deployed for the first time. No further moves" << endl;
 
-          // check for possible horizontal left attack
-          for ( int i = map[player[1].emperor_x]; i >= 2; --i ) {
-            if ( map[player[1].emperor_y][i] == 10 || map[player[1].emperor_y][i] == 11 || map[player[1].emperor_y][i] == 12 || map[player[1].emperor_y][i] == 13 ) {
 
-            }
-          }
-          // check for possible vertical attack
+          ////////attack
 
           cout << "your chess identity will be hidden now" << endl;
           cout << endl;
@@ -120,18 +143,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
 
           }
 
-          if ( map[0][0] == 3 )
-            map[0][0] = 0;
-
-          else if ( map[0][1] == 3 )
-            map[0][1] = 0;
-
-          else if ( map[1][0] == 3 )
-            map[1][0] = 0;
-
-          else if ( map[1][1] == 3 )
-            map[1][1] = 0;
-
+          cancel_base_chess();
           compass();
           print_map(map);
 
