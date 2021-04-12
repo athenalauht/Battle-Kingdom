@@ -9,6 +9,19 @@
 #define D "\u2B9E"
 #define E "\u2588"
 #define CROSS "\u254B"
+
+#define PATH "\u2591"
+#define BORDER "\u2588"
+#define P1_COVERED "\u25CF"
+#define P2_COVERED "\u25CB"
+
+#define TELEPORT "\u2298"
+
+#define EMPEROR "\u2654"
+#define KNIGHT "\u2658"
+#define SOLDIER "\u2659"
+#define ASSASSIN "\u2657"
+
 using namespace std;
 
 void game_title()
@@ -165,4 +178,12 @@ void compass()
   cout << "  " << "N" << endl;
   cout << "W" << " " << CROSS << " " << "E" << endl;
   cout << "  " << "S" << endl;
+}
+
+void chess_identity()
+{
+  cout << EMPEROR << " = emperor" << endl;
+  cout << KNIGHT << " = knight" << endl;
+  cout << SOLDIER << " = soldier" << endl;
+  cout << ASSASSIN << " = assassin" << endl;
 }

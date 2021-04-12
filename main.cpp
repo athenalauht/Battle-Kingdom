@@ -105,6 +105,7 @@ int main()
     }
   }
 
+
   for (int i = 22; i > 1; --i) {
     if (map[i][97] == 1 || map[i][2] == 9) {
       player2_starting_point[0] = 97;
