@@ -7,15 +7,12 @@ Indication:
   3   = p1_covered
   4   = p2_covered
 
-  5   = p1_emperor
-  6   = p1_knight
-  7   = p1_soldier
-  8   = p1_assassin
+  5   = emperor
+  6   = knight
+  7   = soldier
+  8   = assassin
 
-  9   = p2_emperor
-  10  = p2_knight
-  11  = p2_soldier
-  12  = p2_assassin
+  9   = teleport
 
 -----------------------------------
 display.cpp

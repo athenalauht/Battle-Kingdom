@@ -11,8 +11,7 @@
 #include "display.h"
 #include "map.h"
 #include "teleport.h"
-#include "user_interface.h"
-
+// #include "user_interface.h"
 
 #define PATH "\u2591"
 #define BORDER "\u2588"
