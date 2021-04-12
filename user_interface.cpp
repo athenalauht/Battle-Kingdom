@@ -1,6 +1,12 @@
+// Group Project -- Group 13
+// Description: programme that control all user input and output
+
 #include <iostream>
 #include <string>
+#include "display.h"
 #include "map.h"
+#include "save.h"
+
 
 #define PATH "\u2591"
 #define BORDER "\u2588"
@@ -47,6 +53,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
 
     case 'T':
       cout << "The game is ended" << endl;
+      // store_profile(player);
       return true;
       break;
 
@@ -73,10 +80,40 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
           else if ( map[1][1] == 3 )
             map[1][1] = 0;
 
+          compass();
+          print_map(map);
+
+          cout << "your chosen chess is deployed for the first time. No further moves" << endl;
+
+        }
+
         if ( map[player1_starting_point[1]][player1_starting_point[0]] == 9 ) {
 
-          if ()
+          if ( ( player1_starting_point[1] == teleport_1[0] ) && ( player_starting_point[0] == teleport_1[1] ) ) {
+
+            player[1].emperor_x = teleport_2[1];
+
+            player[1].emperor_y = teleport_2[0];
+
+            map[player[1].emperor_y][player[1].emperor_x] = 5;
+
+            if ( map[0][0] == 3 )
+              map[0][0] = 0;
+
+            else if ( map[0][1] == 3 )
+              map[0][1] = 0;
+
+            else if ( map[1][0] == 3 )
+              map[1][0] = 0;
+
+            else if ( map[1][1] == 3 )
+              map[1][1] = 0;
+
+          }
         }
+
+
+      }
           compass();
           print_map(map);
 

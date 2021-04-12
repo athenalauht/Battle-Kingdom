@@ -351,6 +351,22 @@ void print_map( int map[][100]) {
           cout << TELEPORT;
           break;
 
+        case 10:
+          cout <<  EMPEROR;
+          break;
+
+        case 11:
+          cout <<  KNIGHT;
+          break;
+
+        case 12:
+          cout <<  SOLDIER;
+          break;
+
+        case 13:
+          cout <<  ASSASSIN;
+          break;
+
       }
 
 
