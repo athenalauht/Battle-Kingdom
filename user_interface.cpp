@@ -738,7 +738,6 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
           int current_x = player[1].emperor_x;
           int current_y = player[1].emperor_y;
           int step;
-          int direction;
 
           ask_move(map, current_x, current_y, step);
 
