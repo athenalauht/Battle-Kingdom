@@ -33,11 +33,11 @@ struct profile
 
 profile player[3];
 
-void cancel_base_chess(string player, int map[][100])
+void cancel_base_chess(int player, int map[][100])
 {
   switch (player) {
 
-    case "p1":
+    case 1:
       if ( map[0][0] == 3 )
         map[0][0] = 0;
 
@@ -51,7 +51,7 @@ void cancel_base_chess(string player, int map[][100])
         map[1][1] = 0;
       break;
 
-    case "p2":
+    case 2:
       if ( map[23][98] == 4 )
         map[23][98] = 0;
 
@@ -82,21 +82,58 @@ int check_identity ( int y, int x )
   else if ( y == player[1].assassin_y && x == player[1].assassin_x )
     return 8;
 
-  else if ( y == player[2].emperor_y && x == player[1].emperor_x )
+  else if ( y == player[2].emperor_y && x == player[2].emperor_x )
     return 10;
 
-  else if ( y == player[2].knight_y && x == player[1].knight_x )
+  else if ( y == player[2].knight_y && x == player[2].knight_x )
     return 11;
 
-  else if ( y == player[2].soldier_y && x == player[1].soldier_x )
+  else if ( y == player[2].soldier_y && x == player[2].soldier_x )
     return 12;
 
-  else if ( y == player[2].assassin_y && x == player[1].assassin_x )
+  else if ( y == player[2].assassin_y && x == player[2].assassin_x )
     return 13;
 
+  return 0;
 }
 
-bool check_teleporter ( int y, int x, int int teleport_1[2], int teleport_2[2] )
+void death ( int loser )
+{
+  if ( loser == 5 ) {
+    player[1].emperor_y = -1;
+    player[1].emperor_x = -1;
+  }
+  else if ( loser == 6 ) {
+    player[1].knight_y = -1;
+    player[1].knight_x = -1;
+  }
+  else if ( loser == 7 ) {
+    player[1].soldier_y = -1;
+    player[1].soldier_x = -1;
+  }
+  else if ( loser == 8 ) {
+    player[1].assassin_y = -1;
+    player[1].assassin_x = -1;
+  }
+  else if ( loser == 10 ) {
+    player[2].emperor_y = -1;
+    player[1].emperor_x = -1;
+  }
+  else if ( loser == 11 ) {
+    player[2].knight_y = -1;
+    player[2].knight_x = -1;
+  }
+  else if ( loser == 12 ) {
+    player[2].soldier_y = -1;
+    player[2].soldier_x = -1;
+  }
+  else if ( loser == 13 ) {
+    player[2].assassin_y = -1;
+    player[2].assassin_x = -1;
+  }
+}
+
+bool check_teleporter ( int y, int x, int teleport_1[2], int teleport_2[2] )
 {
   if ( y == teleport_1[0] && x == teleport_1[1] )
     return true;
@@ -110,83 +147,158 @@ bool check_teleporter ( int y, int x, int int teleport_1[2], int teleport_2[2] )
 
 void attack( int map[][100], int attacker, int teleport_1[2], int teleport_2[2], int O_COVERED, char attack_option, int y, int x )
 {
+  int defenser;
+  int winner;
   switch (attack_option) {
     case 'N':
-    break;
+      for (int i = 1; i <= 5; ++i) {
+
+        if ( map[y - i][x] == O_COVERED ) {
+
+          defenser = check_identity(y - i, x);
+
+          winner = battle_result(attacker, defenser);
+
+          if (winner == attacker) {
+
+            if ( check_teleporter( y - i, x , teleport_1, teleport_2 ) ) {
+              map[y - i][x] = 9;
+            }
+            else {
+              map[y - i][x] = 1;
+            }
+            cout << "you have killed opponent's chess" << endl;
+            death(defenser);
+          }
+
+          else {
+
+            if ( check_teleporter( y, x, teleport_1, teleport_2 ) ) {
+              map[y][x] = 9;
+            }
+            else {
+              map[y][x] = 1;
+            }
+            cout << "your chess has been killed by opponent's chess" << endl;
+            death(attacker);
+          }
+          goto leave;
+        }
+      }
+      break;
 
     case 'E':
-    for (int i = 1; i <= 5; ++i) {
+      for (int i = 1; i <= 5; ++i) {
 
-      if ( map[y][x + i] == O_COVERED ) {
+        if ( map[y][x + i] == O_COVERED ) {
 
-        defenser = check_identity(y, x + i);
+          defenser = check_identity(y, x + i);
 
-        winner = battle_result(attacker, defenser);
+          winner = battle_result(attacker, defenser);
 
-        if (winner == attacker) {
+          if (winner == attacker) {
 
-          if ( check_teleporter( y, x + i, teleport_1, teleport_2 ) ) {
-            map[y][x + i] = 9;
+            if ( check_teleporter( y, x + i, teleport_1, teleport_2 ) ) {
+              map[y][x + i] = 9;
+            }
+            else {
+              map[y][x + i] = 1;
+            }
+            cout << "you have killed opponent's chess" << endl;
+            death(defenser);
           }
+
           else {
-            map[y][x + i] = 1;
+
+            if ( check_teleporter( y, x, teleport_1, teleport_2 ) ) {
+              map[y][x] = 9;
+            }
+            else {
+              map[y][x] = 1;
+            }
+            cout << "your chess has been killed by opponent's chess" << endl;
+            death(attacker);
           }
-          cout << "you have killed opponent's chess" << endl;
+          goto leave;
         }
-
-        else {
-
-          if ( check_teleporter( y, x, teleport_1, teleport_2 ) ) {
-            map[y][x] = 9;
-          }
-          else {
-            map[y][x] = 1;
-          }
-          cout << "your chess has been killed by opponent's chess" << endl;
-        }
-
       }
-    }
-    break;
+      break;
 
     case 'S':
-    break;
+      for (int i = 1; i <= 5; ++i) {
+
+        if ( map[y + i][x] == O_COVERED ) {
+
+          defenser = check_identity(y + i, x);
+
+          winner = battle_result(attacker, defenser);
+
+          if (winner == attacker) {
+
+            if ( check_teleporter( y + i, x , teleport_1, teleport_2 ) ) {
+              map[y + i][x] = 9;
+            }
+            else {
+              map[y + i][x] = 1;
+            }
+            cout << "you have killed opponent's chess" << endl;
+            death(defenser);
+          }
+
+          else {
+
+            if ( check_teleporter( y, x, teleport_1, teleport_2 ) ) {
+              map[y][x] = 9;
+            }
+            else {
+              map[y][x] = 1;
+            }
+            cout << "your chess has been killed by opponent's chess" << endl;
+            death(attacker);
+          }
+          goto leave;
+        }
+      }
+      break;
 
     case 'W':
-    for (int i = 1; i <= 5; ++i) {
+      for (int i = 1; i <= 5; ++i) {
 
-      if ( map[y][x - i] == O_COVERED ) {
+        if ( map[y][x - i] == O_COVERED ) {
 
-        defenser = check_identity(y, x - i);
+          defenser = check_identity(y, x - i);
 
-        winner = battle_result(attacker, defenser);
+          winner = battle_result(attacker, defenser);
 
-        if (winner == attacker) {
+          if (winner == attacker) {
 
-          if ( check_teleporter( y, x - i, teleport_1, teleport_2 ) ) {
-            map[y][x - i] = 9;
+            if ( check_teleporter( y, x - i, teleport_1, teleport_2 ) ) {
+              map[y][x - i] = 9;
+            }
+            else {
+              map[y][x - i] = 1;
+            }
+            cout << "you have killed opponent's chess" << endl;
+            death(defenser);
           }
+
           else {
-            map[y][x - i] = 1;
+
+            if ( check_teleporter( y, x, teleport_1, teleport_2 ) ) {
+              map[y][x] = 9;
+            }
+            else {
+              map[y][x] = 1;
+            }
+            cout << "your chess has been killed by opponent's chess" << endl;
+            death(attacker);
           }
+          goto leave;
         }
-
-        else {
-
-          if ( check_teleporter( y, x, teleport_1, teleport_2 ) ) {
-            map[y][x] = 9;
-          }
-          else {
-            map[y][x] = 1;
-          }
-        }
-
       }
+      leave:
+      break;
     }
-    break;
-
-
-
 }
 
 bool check_attack( int O_COVERED, int map[][100], int y, int x )
@@ -342,7 +454,7 @@ bool check_attack( int O_COVERED, int map[][100], int y, int x )
   }
 
   check_fin_4:
-  if (can_attack = true) {
+  if (can_attack == true) {
     return true;
   }
   else {
@@ -353,117 +465,132 @@ bool check_attack( int O_COVERED, int map[][100], int y, int x )
 
 bool player1_interface( int player1_starting_point[2], int map[][100], int teleport_1[2], int teleport_2[2] )
 {
-  char chosen_chess;
+  bool another_move = true;
 
-  compass();
-  print_map(map);
+  while (another_move) {
+    another_move = false;
+    char chosen_chess;
 
-  cout << "which chess would you like to move?" << endl;
-  cout << "Emperor / Knight / Soldier / Assassin" << endl;
-  cout << "Type (E / K / S / A) to move, T to save and terminate the game" << endl;
-  cout << "\n" << endl;
-  cin >> chosen_chess;
+    // all display element when printing map
+    compass();
+    print_map(map);
+    chess_identity();
 
-  switch (chosen_chess) {
+    cout << "which chess would you like to move?" << endl;
+    cout << "Emperor / Knight / Soldier / Assassin" << endl;
+    cout << "Type (E / K / S / A) to move, T to save and terminate the game" << endl;
+    cout << "\n" << endl;
+    cin >> chosen_chess;
 
-    case 'T':
-      cout << "The game is ended" << endl;
-      // store_profile(player);
-      return true;
-      break;
+    switch (chosen_chess) {
 
-    case 'E':
-      if ( ( player[1].emperor_x == 0 ) && ( player[1].emperor_y == 0 ) ) {
+      case 'T':
+        cout << "The game is ended" << endl;
+        // store_profile(player);
+        return true;
+        break;
 
-        if ( check_teleporter (player1_starting_point[1], player1_starting_point[0], teleport_1, teleport_2 ) ) {
+      case 'E':
+        if ( ( player[1].emperor_x == 0 ) && ( player[1].emperor_y == 0 ) ) {
 
-          if ( ( player1_starting_point[1] == teleport_1[0] ) && ( player1_starting_point[0] == teleport_1[1] ) ) {
+          if ( map[player1_starting_point[1]][player1_starting_point[0]] != 1 && map[player1_starting_point[1]][player1_starting_point[0]] != 9) {
+            cout << "The starting point is occupied, please choose another move" << endl;
+            another_move = true;
+            goto another;
+          }
 
-            player[1].emperor_x = teleport_2[1];
+          if ( check_teleporter (player1_starting_point[1], player1_starting_point[0], teleport_1, teleport_2 ) ) {
 
-            player[1].emperor_y = teleport_2[0];
+            if ( ( player1_starting_point[1] == teleport_1[0] ) && ( player1_starting_point[0] == teleport_1[1] ) ) {
+
+              player[1].emperor_x = teleport_2[1];
+
+              player[1].emperor_y = teleport_2[0];
+
+              map[player[1].emperor_y][player[1].emperor_x] = 5;
+
+            }
+
+            else {
+
+              player[1].emperor_x = teleport_1[1];
+
+              player[1].emperor_y = teleport_1[0];
+
+              map[player[1].emperor_y][player[1].emperor_x] = 5;
+
+            }
+            cout << "Your chosen chess is deployed for the first time. No further moves" << endl;
+            cout << "The starting point of your side contains a teleporter, your chosen chess is being teleported to the other side" << endl;
+          }
+
+          if ( map[player1_starting_point[1]][player1_starting_point[0]] == 1 ) {
+
+            player[1].emperor_x = player1_starting_point[0];
+
+            player[1].emperor_y = player1_starting_point[1];
 
             map[player[1].emperor_y][player[1].emperor_x] = 5;
 
+            cout << "Your chosen chess is deployed for the first time. No further moves" << endl;
+          }
+
+          cancel_base_chess(1, map);
+          compass();
+          print_map(map);
+          chess_identity();
+
+          if (check_attack(4, map, player[1].emperor_y, player[1].emperor_x)) {
+            char attack_option;
+            cout << "please choose the direction to attack, or type X to not attack" << endl;
+            cin >> attack_option;
+            if (attack_option == 'X') {
+              goto final;
+            }
+            attack(map, 5, teleport_1, teleport_2, 4, attack_option, player[1].emperor_y, player[1].emperor_x);
           }
 
           else {
-
-            player[1].emperor_x = teleport_1[1];
-
-            player[1].emperor_y = teleport_1[0];
-
-            map[player[1].emperor_y][player[1].emperor_x] = 5;
-
+            cout << "you do not have any target to attack" << endl;
           }
-          cout << "Your chosen chess is deployed for the first time. No further moves" << endl;
-          cout << "The starting point of your side contains a teleporter, your chosen chess is being teleported to the other side" << endl;
-        }
 
-        else  {
+          final:
+          cout << "your chess identity will be hidden now" << endl;
+          cout << endl;
 
-          player[1].emperor_x = player1_starting_point[0];
-
-          player[1].emperor_y = player1_starting_point[1];
-
-          map[player[1].emperor_y][player[1].emperor_x] = 5;
-
-          cout << "Your chosen chess is deployed for the first time. No further moves" << endl;
-        }
-
-        cancel_base_chess(p1);
-        compass();
-        print_map(map);
-
-        if (check_attack(4, map, player[1].emperor_y, player[1].emperor_x)) {
-          char attack_option;
-          cout << "please choose the direction to attack, or type X to not attack" << endl;
-          cin >> attack_option;
-          if (attack_option == 'X') {
-            goto final;
-          }
-          attack(map, 5, teleport_1, teleport_2, 4, attack_option, player[1].emperor_y, player[1].emperor_x);
-        }
-        else {
-          cout << "you do not have any target to attack" << endl;
-        }
-
-        final:
-        cout << "your chess identity will be hidden now" << endl;
-        cout << endl;
-
-        map[player[1].emperor_y][player[1].emperor_x] = 3;
+          map[player[1].emperor_y][player[1].emperor_x] = 3;
 
         }
 
-
-        if ( map[player1_starting_point[1]][player1_starting_point[0]] != 1 && map[player1_starting_point[1]][player1_starting_point[0]] != 9) {
-          cout << "The starting point is occupied, please choose another move" << endl;
+        else if (( player[1].emperor_x == -1 ) && ( player[1].emperor_y == -1 )) {
+          cout << "Your chess is already dead. Please choose another chess" << endl;
+          another_move = true;
+          goto another;
         }
-      }
+        break;
 
 
 
 
 
 
+      case 'K':
+        break;
 
-    case 'K':
-      break;
+      case 'S':
+        break;
 
-    case 'S':
-      break;
+      case 'A':
+        break;
 
-    case 'A':
-      break;
+    }
 
+    char response;
+    cout << "Player 1, are you ready?" << endl;
+    cout << "Press Y to pass the control to player 2" << endl;
+    cin >> response;
+    another:
   }
-
-  char response;
-  cout << "Player 1, are you ready?" << endl;
-  cout << "Press Y to pass the control to player 2" << endl;
-  cin >> response;
-
   return false;
 }
 
