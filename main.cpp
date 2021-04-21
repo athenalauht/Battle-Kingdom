@@ -128,6 +128,16 @@ int main()
       break;
     }
   }
+  
+  // to retrieve previous record
+  char choice;
+  cout << "Do you want to retrieve previous game data? (Y / N )"
+  cin >> choice;
+
+  if (choice == 'Y') {
+    //retrieve data
+  }
+
   // to start the game
   int count = 1;
   bool termination = false;
