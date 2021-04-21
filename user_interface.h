@@ -10,5 +10,9 @@ void death();
 bool check_teleporter();
 void attack();
 bool check_attack();
+void first_move();
+void ask_move();
+void reveal_chess();
+void hide_chess();
 
 #endif
