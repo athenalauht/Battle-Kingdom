@@ -702,24 +702,28 @@ void ask_move(int map[][100], int *&y, int *&x, int &step, int teleport_1[2], in
         case 'N':
 
           new_y = *y - step;
+          new_x = *x;
 
           break;
 
         case 'E':
 
           new_x = *x + step;
+          new_y = *y;
 
           break;
 
         case 'S':
 
           new_y = *y + step;
+          new_x = *x;
 
           break;
 
         case 'W':
 
           new_x = *x - step;
+          new_y = *y;
 
           break;
 
