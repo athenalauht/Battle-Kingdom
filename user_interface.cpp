@@ -463,7 +463,166 @@ bool check_attack( int O_COVERED, int map[][100], int y, int x )
 
 }
 
-int ask_move(){
+int ask_move(int map[][100], int x, int y, int &step){
+
+  cout << "the direction of the move?" << endl;
+
+  char char_dir;
+
+  int max_move;
+
+  cin >> char_dir;
+
+  cout << "how many step do you want to move?" << endl;
+
+  cin >> step;
+
+  bool allow_move = true;
+
+  switch (char_dir) {
+    case 'N':
+
+      for (int i = 1; i < step + 1; ++i){
+        if ((map[y-i][x] != 1) && (map[y-i][x] != 9)){
+          allow_move = false;
+        }
+      }
+
+      break;
+
+    case 'E':
+
+      for (int i = 1; i < step + 1; ++i){
+        if ((map[y][x + i] != 1) && (map[y][x + i] != 9)){
+          allow_move = false;
+        }
+      }
+
+      break;
+
+    case 'S':
+
+      for (int i = 1; i < step + 1; ++i){
+        if ((map[y + i][x] != 1) && (map[y + i][x] != 9)){
+          allow_move = false;
+        }
+      }
+
+      break;
+
+    case 'W':
+
+      for (int i = 1; i < step + 1; ++i){
+        if ((map[y][x - i] != 1) && (map[y][x - i] != 9)){
+          allow_move = false;
+        }
+      }
+
+      break;
+
+    }
+
+    int new_x, new_y;
+
+    if (allow_move){
+
+      switch (char_dir) {
+        case 'N':
+
+          new_y = y - step;
+
+          break;
+
+        case 'E':
+
+          new_x = x + step;
+
+          break;
+
+        case 'S':
+
+          new_y = y + step;
+
+          break;
+
+        case 'W':
+
+          new_x = x - step;
+
+          break;
+
+      }
+
+
+    }
+
+    if (check_teleporter(y, x, teleport_1, teleport_2)){
+      map[y][x] = 9;
+    }
+    else{
+      map[y][x] = 1;
+    }
+
+    if (check_teleporter(new_y, new_x, teleport_1, teleport_2){
+
+      if ( ( new_y == teleport_1[0] ) && ( new_x == teleport_1[1] ) ) {
+
+        player[1].emperor_x = teleport_2[1];
+
+        player[1].emperor_y = teleport_2[0];
+
+        map[player[1].emperor_y][player[1].emperor_x] = 5;
+
+      }
+
+      else {
+
+        player[1].emperor_x = teleport_1[1];
+
+        player[1].emperor_y = teleport_1[0];
+
+        map[player[1].emperor_y][player[1].emperor_x] = 5;
+
+      }
+
+    }
+    else{
+
+      player[1].emperor_y = new_y;
+      player[1].emperor_x = new_x;
+      map[player[1].emperor_y][player[1].emperor_x] = 5;
+      cout << "The destination of your chess contains a teleporter, your chosen chess is being teleported to the other side" << endl;
+
+    }
+
+    cancel_base_chess(1, map);
+    compass();
+    print_map(map);
+    chess_identity();
+
+    if (check_attack(4, map, player[1].emperor_y, player[1].emperor_x)) {
+      char attack_option;
+      cout << "please choose the direction to attack, or type X to not attack" << endl;
+      cin >> attack_option;
+      if (attack_option == 'X') {
+        goto final;
+      }
+      attack(map, 5, teleport_1, teleport_2, 4, attack_option, player[1].emperor_y, player[1].emperor_x);
+    }
+
+    else {
+      cout << "you do not have any target to attack" << endl;
+    }
+
+    final:
+    cout << "your chess identity will be hidden now" << endl;
+    cout << endl;
+
+    map[player[1].emperor_y][player[1].emperor_x] = 3;
+
+
+
+
 
 
 
@@ -579,8 +738,9 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
           int current_x = player[1].emperor_x;
           int current_y = player[1].emperor_y;
           int step;
+          int direction;
 
-          step = ask_move();
+          step = ask_move(map, current_x, current_y, step);
 
 
         }
