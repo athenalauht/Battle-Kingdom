@@ -308,7 +308,6 @@ void print_map( int map[][100]) {
 
     for (int x = 0; x < SIZE_X; ++x){
 
-
       switch(map[y][x]){
 
         case 0:

@@ -76,8 +76,6 @@ int main()
 
   //--------------------------------------------
 
-  cout << "This is the initial map setting. Player 1 will first start his/her round" << endl;
-
 
   struct profile
   {
@@ -109,6 +107,7 @@ int main()
   player[2].assassin_x = 0;
   player[2].assassin_y = 0;
 
+
   // to locate the starting point of each player
   int player1_starting_point[2];
   int player2_starting_point[2];
@@ -130,23 +129,23 @@ int main()
     }
   }
 
-
   // to retrieve previous record
   char choice;
-  cout << "Do you want to retrieve previous game data? (Y / N )";
+  cout << "Do you want to retrieve previous game data? ( Y / N )" << endl;
   cin >> choice;
 
   if (choice == 'Y') {
     //retrieve data
   }
 
+  cout << "This is the initial map setting. Player 1 will first start his/her round" << endl;
   // to start the game
   int count = 1;
   bool termination = false;
   while (!termination) {
 
     if (count % 2 == 0) {
-      // termination = player2_interface(player2_starting_point[2]);
+      termination = player2_interface( player2_starting_point, map, teleport_1, teleport_2);
       count += 1;
     }
 
@@ -155,9 +154,6 @@ int main()
       count += 1;
     }
 
-    if (count % 3 == 0) {
-      create_teleport(teleport_1, teleport_2, map);
-    }
 
   }
   return 0;

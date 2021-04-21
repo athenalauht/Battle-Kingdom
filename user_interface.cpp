@@ -108,6 +108,7 @@ void hide_chess(int x, int map[][100])
         }
       }
       break;
+
     case 2:
       if ( player[2].emperor_x != 0 && player[2].emperor_y != 0 ) {
         if ( player[2].emperor_x != -1 && player[2].emperor_y != -1 ) {
@@ -129,6 +130,7 @@ void hide_chess(int x, int map[][100])
           map[player[2].assassin_y][player[2].assassin_x] = 4;
         }
       }
+      break;
   }
 }
 
@@ -562,11 +564,12 @@ bool check_attack( int O_COVERED, int map[][100], int *&y, int *&x )
   }
 
 }
-void first_move(int map[][100], int *&y, int *&x, int starting_point[2], int teleport_1[2], int teleport_2[2], int identity, int opponent_covered, bool &another_move)
+void first_move(int map[][100], int *&y, int *&x, int starting_point[2], int teleport_1[2], int teleport_2[2], int identity, int opponent_covered, bool &another_move, bool &another, int p)
 {
   if ( map[starting_point[1]][starting_point[0]] != 1 && map[starting_point[1]][starting_point[0]] != 9) {
     cout << "The starting point is occupied, please choose another move" << endl;
     another_move = true;
+    another = false;
     return;
   }
 
@@ -606,7 +609,7 @@ void first_move(int map[][100], int *&y, int *&x, int starting_point[2], int tel
     cout << "Your chosen chess is deployed for the first time. No further moves" << endl;
   }
 
-  cancel_base_chess(1, map);
+  cancel_base_chess(p, map);
   compass();
   print_map(map);
   chess_identity();
@@ -637,7 +640,7 @@ void ask_move(int map[][100], int *&y, int *&x, int &step, int teleport_1[2], in
   cout << "the direction of the move?" << endl;
 
   char char_dir;
-  
+
   int max_move;
 
   cin >> char_dir;
@@ -814,6 +817,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
     cout << "\n" << endl;
     cin >> chosen_chess;
 
+
     switch (chosen_chess) {
 
       case 'T':
@@ -823,12 +827,12 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
         break;
 
       case 'E':
-        *current_x = player[1].emperor_x;
-        *current_y = player[1].emperor_y;
+        current_x = &player[1].emperor_x;
+        current_y = &player[1].emperor_y;
 
         if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
 
-          first_move( map, current_x, current_y, player1_starting_point, teleport_1, teleport_2, 5, 4, another_move);
+          first_move( map, current_y, current_x, player1_starting_point, teleport_1, teleport_2, 5, 4, another_move, another, 1);
           hide_chess(1, map);
         }
 
@@ -839,19 +843,19 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
         }
 
         else {
-          ask_move(map, current_x, current_y, step, teleport_1, teleport_2, 5, 4);
+          ask_move(map, current_y, current_x, step, teleport_1, teleport_2, 5, 4);
           hide_chess(1, map);
         }
 
         break;
 
       case 'K':
-        *current_x = player[1].knight_x;
-        *current_y = player[1].knight_y;
+        current_x = &player[1].knight_x;
+        current_y = &player[1].knight_y;
 
         if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
 
-          first_move( map, current_x, current_y, player1_starting_point, teleport_1, teleport_2, 6, 4, another_move);
+          first_move( map, current_y, current_x, player1_starting_point, teleport_1, teleport_2, 6, 4, another_move, another, 1);
           hide_chess(1, map);
         }
 
@@ -862,18 +866,18 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
         }
 
         else {
-          ask_move(map, current_x, current_y, step, teleport_1, teleport_2, 6, 4);
+          ask_move(map, current_y, current_x, step, teleport_1, teleport_2, 6, 4);
           hide_chess(1, map);
         }
         break;
 
       case 'S':
-        *current_x = player[1].soldier_x;
-        *current_y = player[1].soldier_y;
+        current_x = &player[1].soldier_x;
+        current_y = &player[1].soldier_y;
 
         if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
 
-          first_move( map, current_x, current_y, player1_starting_point, teleport_1, teleport_2, 7, 4, another_move);
+          first_move( map, current_y, current_x, player1_starting_point, teleport_1, teleport_2, 7, 4, another_move, another, 1);
           hide_chess(1, map);
         }
 
@@ -884,18 +888,18 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
         }
 
         else {
-          ask_move(map, current_x, current_y, step, teleport_1, teleport_2, 7, 4);
+          ask_move(map, current_y, current_x, step, teleport_1, teleport_2, 7, 4);
           hide_chess(1, map);
         }
         break;
 
       case 'A':
-        *current_x = player[1].assassin_x;
-        *current_y = player[1].assassin_y;
+        current_x = &player[1].assassin_x;
+        current_y = &player[1].assassin_y;
 
         if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
 
-          first_move( map, current_x, current_y, player1_starting_point, teleport_1, teleport_2, 8, 4, another_move);
+          first_move( map, current_y, current_x, player1_starting_point, teleport_1, teleport_2, 8, 4, another_move, another, 1);
           hide_chess(1, map);
         }
 
@@ -906,14 +910,14 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
         }
 
         else {
-          ask_move(map, current_x, current_y, step, teleport_1, teleport_2, 8, 4);
+          ask_move(map, current_y, current_x, step, teleport_1, teleport_2, 8, 4);
           hide_chess(1, map);
         }
         break;
 
     }
 
-    if (another){
+    if ( another ) {
       char response;
       cout << "Player 1, are you ready?" << endl;
       cout << "Press Y to pass the control to player 2" << endl;
@@ -957,12 +961,12 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
         break;
 
       case 'E':
-        *current_x = player[2].emperor_x;
-        *current_y = player[2].emperor_y;
+        current_x = &player[2].emperor_x;
+        current_y = &player[2].emperor_y;
 
         if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
 
-          first_move( map, current_x, current_y, player1_starting_point, teleport_1, teleport_2, 10, 3, another_move);
+          first_move( map, current_y, current_x, player1_starting_point, teleport_1, teleport_2, 10, 3, another_move, another, 2);
           hide_chess(2, map);
         }
 
@@ -973,19 +977,19 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
         }
 
         else {
-          ask_move(map, current_x, current_y, step, teleport_1, teleport_2, 10, 3);
+          ask_move(map, current_y, current_x, step, teleport_1, teleport_2, 10, 3);
           hide_chess(2, map);
         }
 
         break;
 
       case 'K':
-        *current_x = player[1].knight_x;
-        *current_y = player[1].knight_y;
+        current_x = &player[2].knight_x;
+        current_y = &player[2].knight_y;
 
         if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
 
-          first_move( map, current_x, current_y, player1_starting_point, teleport_1, teleport_2, 11, 3, another_move);
+          first_move( map, current_y, current_x, player1_starting_point, teleport_1, teleport_2, 11, 3, another_move, another, 2);
           hide_chess(2, map);
         }
 
@@ -996,18 +1000,18 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
         }
 
         else {
-          ask_move(map, current_x, current_y, step, teleport_1, teleport_2, 11, 3);
+          ask_move(map, current_y, current_x, step, teleport_1, teleport_2, 11, 3);
           hide_chess(2, map);
         }
         break;
 
       case 'S':
-        *current_x = player[1].soldier_x;
-        *current_y = player[1].soldier_y;
+        current_x = &player[2].soldier_x;
+        current_y = &player[2].soldier_y;
 
         if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
 
-          first_move( map, current_x, current_y, player1_starting_point, teleport_1, teleport_2, 12, 3, another_move);
+          first_move( map, current_y, current_x, player1_starting_point, teleport_1, teleport_2, 12, 3, another_move, another, 2);
           hide_chess(2, map);
         }
 
@@ -1018,18 +1022,18 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
         }
 
         else {
-          ask_move(map, current_x, current_y, step, teleport_1, teleport_2, 12, 3);
+          ask_move(map, current_y, current_x, step, teleport_1, teleport_2, 12, 3);
           hide_chess(2, map);
         }
         break;
 
       case 'A':
-        *current_x = player[1].assassin_x;
-        *current_y = player[1].assassin_y;
+        current_x = &player[2].assassin_x;
+        current_y = &player[2].assassin_y;
 
         if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
 
-          first_move( map, current_x, current_y, player1_starting_point, teleport_1, teleport_2, 13, 3, another_move);
+          first_move( map, current_y, current_x, player1_starting_point, teleport_1, teleport_2, 13, 3, another_move, another, 2);
           hide_chess(2, map);
         }
 
@@ -1040,7 +1044,7 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
         }
 
         else {
-          ask_move(map, current_x, current_y, step, teleport_1, teleport_2, 13, 3);
+          ask_move(map, current_y, current_x, step, teleport_1, teleport_2, 13, 3);
           hide_chess(2, map);
         }
         break;
@@ -1050,7 +1054,7 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
   if (another){
     char response;
     cout << "Player 2, are you ready?" << endl;
-    cout << "Press Y to pass the control to player 2" << endl;
+    cout << "Press Y to pass the control to player 1" << endl;
     cin >> response;
     }
 
