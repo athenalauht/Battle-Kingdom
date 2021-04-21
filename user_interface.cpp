@@ -19,6 +19,7 @@
 #define ASSASSIN "\u2657"
 
 using namespace std;
+
 struct profile
 {
   int emperor_x;
@@ -280,7 +281,7 @@ void attack( int map[][100], int attacker, int teleport_1[2], int teleport_2[2],
             cout << "your chess has been killed by opponent's chess" << endl;
             death(attacker);
           }
-          goto leave;
+          return;
         }
       }
       break;
@@ -317,7 +318,7 @@ void attack( int map[][100], int attacker, int teleport_1[2], int teleport_2[2],
             cout << "your chess has been killed by opponent's chess" << endl;
             death(attacker);
           }
-          goto leave;
+          return;
         }
       }
       break;
@@ -354,7 +355,7 @@ void attack( int map[][100], int attacker, int teleport_1[2], int teleport_2[2],
             cout << "your chess has been killed by opponent's chess" << endl;
             death(attacker);
           }
-          goto leave;
+          return;
         }
       }
       break;
@@ -391,16 +392,14 @@ void attack( int map[][100], int attacker, int teleport_1[2], int teleport_2[2],
             cout << "your chess has been killed by opponent's chess" << endl;
             death(attacker);
           }
-          goto leave;
+          return;
         }
       }
       break;
 
   }
-  leave:
+
 }
-
-
 
 bool check_attack( int O_COVERED, int map[][100], int *&y, int *&x )
 {
@@ -638,7 +637,7 @@ void ask_move(int map[][100], int *&y, int *&x, int &step, int teleport_1[2], in
   cout << "the direction of the move?" << endl;
 
   char char_dir;
-
+  
   int max_move;
 
   cin >> char_dir;
@@ -797,6 +796,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
   bool another_move = true;
   int * current_x = NULL;
   int * current_y = NULL;
+  bool another = true;
   int step;
 
   while (another_move) {
@@ -835,7 +835,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
         else if (( *current_x == -1 ) && ( *current_y == -1 )) {
           cout << "Your chess is already dead. Please choose another chess" << endl;
           another_move = true;
-          goto another;
+          another = false;
         }
 
         else {
@@ -858,7 +858,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
         else if (( *current_x == -1 ) && ( *current_y == -1 )) {
           cout << "Your chess is already dead. Please choose another chess" << endl;
           another_move = true;
-          goto another;
+          another = false;
         }
 
         else {
@@ -880,7 +880,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
         else if (( *current_x == -1 ) && ( *current_y == -1 )) {
           cout << "Your chess is already dead. Please choose another chess" << endl;
           another_move = true;
-          goto another;
+          another = false;
         }
 
         else {
@@ -902,7 +902,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
         else if (( *current_x == -1 ) && ( *current_y == -1 )) {
           cout << "Your chess is already dead. Please choose another chess" << endl;
           another_move = true;
-          goto another;
+          another = false;
         }
 
         else {
@@ -913,11 +913,12 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
 
     }
 
-    char response;
-    cout << "Player 1, are you ready?" << endl;
-    cout << "Press Y to pass the control to player 2" << endl;
-    cin >> response;
-    another:
+    if (another){
+      char response;
+      cout << "Player 1, are you ready?" << endl;
+      cout << "Press Y to pass the control to player 2" << endl;
+      cin >> response;
+    }
 
   }
   return false;
@@ -927,6 +928,7 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
 {
   reveal_chess(2, map);
   bool another_move = true;
+  bool another = true;
   int * current_x = NULL;
   int * current_y = NULL;
   int step;
@@ -967,7 +969,7 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
         else if (( *current_x == -1 ) && ( *current_y == -1 )) {
           cout << "Your chess is already dead. Please choose another chess" << endl;
           another_move = true;
-          goto another;
+          another = false;
         }
 
         else {
@@ -990,7 +992,7 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
         else if (( *current_x == -1 ) && ( *current_y == -1 )) {
           cout << "Your chess is already dead. Please choose another chess" << endl;
           another_move = true;
-          goto another;
+          another = false;
         }
 
         else {
@@ -1012,7 +1014,7 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
         else if (( *current_x == -1 ) && ( *current_y == -1 )) {
           cout << "Your chess is already dead. Please choose another chess" << endl;
           another_move = true;
-          goto another;
+          another = false;
         }
 
         else {
@@ -1034,7 +1036,7 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
         else if (( *current_x == -1 ) && ( *current_y == -1 )) {
           cout << "Your chess is already dead. Please choose another chess" << endl;
           another_move = true;
-          goto another;
+          another = false;
         }
 
         else {
@@ -1045,11 +1047,12 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
 
     }
 
+  if (another){
     char response;
     cout << "Player 2, are you ready?" << endl;
     cout << "Press Y to pass the control to player 2" << endl;
     cin >> response;
-    another:
+    }
 
   }
   return false;

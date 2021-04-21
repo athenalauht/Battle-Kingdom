@@ -17,6 +17,7 @@
 #include "user_interface.h"
 #include "battle_result.h"
 
+
 #define PATH "\u2591"
 #define BORDER "\u2588"
 #define P1_COVERED "\u25CF"
@@ -128,10 +129,11 @@ int main()
       break;
     }
   }
-  
+
+
   // to retrieve previous record
   char choice;
-  cout << "Do you want to retrieve previous game data? (Y / N )"
+  cout << "Do you want to retrieve previous game data? (Y / N )";
   cin >> choice;
 
   if (choice == 'Y') {
