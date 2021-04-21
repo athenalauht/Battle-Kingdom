@@ -296,9 +296,9 @@ void attack( int map[][100], int attacker, int teleport_1[2], int teleport_2[2],
           goto leave;
         }
       }
-      leave:
       break;
     }
+    leave:
 }
 
 bool check_attack( int O_COVERED, int map[][100], int y, int x )
@@ -465,7 +465,7 @@ bool check_attack( int O_COVERED, int map[][100], int y, int x )
 
 int ask_move(){
 
-  
+
 
 }
 
