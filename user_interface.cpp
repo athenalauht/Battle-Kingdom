@@ -740,7 +740,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
           int step;
           int direction;
 
-          step = ask_move(map, current_x, current_y, step);
+          ask_move(map, current_x, current_y, step);
 
 
         }
