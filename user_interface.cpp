@@ -33,7 +33,7 @@ struct profile
 
 profile player[3];
 
-void cancel_base_chess()
+void cancel_base_chess( int map[][100] )
 {
   if ( map[0][0] == 3 )
     map[0][0] = 0;
@@ -74,9 +74,11 @@ int check_identity ( int y, int x )
   else if ( y == player[2].assassin_y && x == player[1].assassin_x )
     return 13;
 
+  return -1;
+
 }
 
-bool check_teleporter ( int y, int x, int int teleport_1[2], int teleport_2[2] )
+bool check_teleporter ( int y, int x, int teleport_1[2], int teleport_2[2] )
 {
   if ( y == teleport_1[0] && x == teleport_1[1] )
     return true;
@@ -90,6 +92,8 @@ bool check_teleporter ( int y, int x, int int teleport_1[2], int teleport_2[2] )
 
 void attack( int map[][100], int attacker, int teleport_1[2], int teleport_2[2], int O_COVERED, char attack_option, int y, int x )
 {
+
+    int defenser, winner;
   switch (attack_option) {
     case 'N':
     break;

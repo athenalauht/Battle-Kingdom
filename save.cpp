@@ -9,10 +9,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "user_interface.h"
 
 using namespace std;
 
-void store_profile(int player[3]){
+void store_profile(profile player[3]){
 
   //open p1.txt
   ofstream p1;
@@ -39,7 +40,7 @@ void store_profile(int player[3]){
 
 }
 
-void store_teleport(int teleport_1[2],int teleport_1[2]){
+void store_teleport(int teleport_1[2],int teleport_2[2]){
 
   //open teleport.txt
   ofstream teleport;

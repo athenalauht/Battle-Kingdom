@@ -2,6 +2,6 @@
 #define battle_result_H
 #include "battle_result.cpp"
 
-void battle_result();
+int battle_result();
 
 #endif

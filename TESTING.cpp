@@ -3,14 +3,14 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#define PATH "\u2591"
 
 
 
 using namespace std;
 int main(){
-  cout << PATH << PATH << endl;
-  cout << PATH;
-  return 0;
+    string str_value = "";
+    str_value = str_value + 'a';
+    cout << str_value;
+    return 0;
 
 }

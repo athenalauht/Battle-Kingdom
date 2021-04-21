@@ -33,4 +33,5 @@ int battle_result(int attack, int defense){
       return attack;
     }
   }
+  return -1;
 }

@@ -13,6 +13,7 @@
 #include "map.h"
 #include "teleport.h"
 #include "save.h"
+#include "retreive.h"
 #include "user_interface.h"
 #include "battle_result.h"
 
@@ -50,6 +51,7 @@ int main()
 
     }
 
+
   //initialize the teleport
   int teleport_1[2];
   int teleport_2[2];
@@ -74,6 +76,19 @@ int main()
   //--------------------------------------------
 
   cout << "This is the initial map setting. Player 1 will first start his/her round" << endl;
+
+
+  struct profile
+  {
+    int emperor_x;
+    int emperor_y;
+    int knight_x;
+    int knight_y;
+    int soldier_x;
+    int soldier_y;
+    int assassin_x;
+    int assassin_y;
+  };
 
   player[1].emperor_x = 0;
   player[1].emperor_y = 0;
