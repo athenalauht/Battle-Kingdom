@@ -852,6 +852,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
         if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
 
           first_move( map, current_x, current_y, player1_starting_point, teleport_1, teleport_2, 6, 4, another_move);
+          hide_chess(1, map);
         }
 
         else if (( *current_x == -1 ) && ( *current_y == -1 )) {
@@ -862,6 +863,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
 
         else {
           ask_move(map, current_x, current_y, step, teleport_1, teleport_2, 6, 4);
+          hide_chess(1, map);
         }
         break;
 
@@ -872,6 +874,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
         if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
 
           first_move( map, current_x, current_y, player1_starting_point, teleport_1, teleport_2, 7, 4, another_move);
+          hide_chess(1, map);
         }
 
         else if (( *current_x == -1 ) && ( *current_y == -1 )) {
@@ -882,6 +885,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
 
         else {
           ask_move(map, current_x, current_y, step, teleport_1, teleport_2, 7, 4);
+          hide_chess(1, map);
         }
         break;
 
@@ -892,6 +896,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
         if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
 
           first_move( map, current_x, current_y, player1_starting_point, teleport_1, teleport_2, 8, 4, another_move);
+          hide_chess(1, map);
         }
 
         else if (( *current_x == -1 ) && ( *current_y == -1 )) {
@@ -902,6 +907,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
 
         else {
           ask_move(map, current_x, current_y, step, teleport_1, teleport_2, 8, 4);
+          hide_chess(1, map);
         }
         break;
 
@@ -966,7 +972,7 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
 
         else {
           ask_move(map, current_x, current_y, step, teleport_1, teleport_2, 10, 3);
-          hide_chess(1, map);
+          hide_chess(2, map);
         }
 
         break;
@@ -978,6 +984,7 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
         if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
 
           first_move( map, current_x, current_y, player1_starting_point, teleport_1, teleport_2, 11, 3, another_move);
+          hide_chess(2, map);
         }
 
         else if (( *current_x == -1 ) && ( *current_y == -1 )) {
@@ -988,6 +995,7 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
 
         else {
           ask_move(map, current_x, current_y, step, teleport_1, teleport_2, 11, 3);
+          hide_chess(2, map);
         }
         break;
 
@@ -998,6 +1006,7 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
         if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
 
           first_move( map, current_x, current_y, player1_starting_point, teleport_1, teleport_2, 12, 3, another_move);
+          hide_chess(2, map);
         }
 
         else if (( *current_x == -1 ) && ( *current_y == -1 )) {
@@ -1008,6 +1017,7 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
 
         else {
           ask_move(map, current_x, current_y, step, teleport_1, teleport_2, 12, 3);
+          hide_chess(2, map);
         }
         break;
 
@@ -1018,6 +1028,7 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
         if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
 
           first_move( map, current_x, current_y, player1_starting_point, teleport_1, teleport_2, 13, 3, another_move);
+          hide_chess(2, map);
         }
 
         else if (( *current_x == -1 ) && ( *current_y == -1 )) {
@@ -1028,6 +1039,7 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
 
         else {
           ask_move(map, current_x, current_y, step, teleport_1, teleport_2, 13, 3);
+          hide_chess(2, map);
         }
         break;
 
