@@ -12,7 +12,7 @@
 
 using namespace std;
 
-bool retrieve(int map[][100]){
+bool retrieve(int map[][100], int teleport_1[2], int teleport_2[2]){
 
   //retrieve path
   initial_path(map);
@@ -34,7 +34,7 @@ bool retrieve(int map[][100]){
   }
 
   //open p2.txt
-  ifstream p2;
+
   p2.open("p2.txt");
   if (p2.fail()) {
     return 1;

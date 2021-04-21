@@ -463,6 +463,12 @@ bool check_attack( int O_COVERED, int map[][100], int y, int x )
 
 }
 
+int ask_move(){
+
+  
+
+}
+
 bool player1_interface( int player1_starting_point[2], int map[][100], int teleport_1[2], int teleport_2[2] )
 {
   bool another_move = true;
@@ -567,6 +573,19 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
           another_move = true;
           goto another;
         }
+
+        else{
+
+          int current_x = player[1].emperor_x;
+          int current_y = player[1].emperor_y;
+          int step;
+
+          step = ask_move();
+
+
+        }
+
+
         break;
 
 
