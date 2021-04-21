@@ -595,7 +595,6 @@ int ask_move(int map[][100], int x, int y, int &step){
 
     }
 
-    cancel_base_chess(1, map);
     compass();
     print_map(map);
     chess_identity();
