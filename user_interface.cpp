@@ -761,13 +761,15 @@ void ask_move(int map[][100], int *&y, int *&x, int &step, int teleport_1[2], in
 
       }
 
+      cout << "The destination of your chess contains a teleporter, your chosen chess is being teleported to the other side" << endl;
+
     }
     else {
 
       *y = new_y;
       *x = new_x;
       map[*y][*x] = identity;
-      cout << "The destination of your chess contains a teleporter, your chosen chess is being teleported to the other side" << endl;
+
 
     }
 
@@ -921,6 +923,11 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
 
     }
 
+    if ( *current_x == 97 ) {
+      cout << "player 1 win the game" << endl;
+      return true;
+    }
+
     if ( another ) {
       char response;
       cout << "Player 1, are you ready?" << endl;
@@ -1055,11 +1062,16 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
 
     }
 
-  if (another){
-    char response;
-    cout << "Player 2, are you ready?" << endl;
-    cout << "Press Y to pass the control to player 1" << endl;
-    cin >> response;
+    if ( *current_x == 2 ) {
+      cout << "player 2 win the game" << endl;
+      return true;
+    }
+
+    if (another) {
+      char response;
+      cout << "Player 2, are you ready?" << endl;
+      cout << "Press Y to pass the control to player 1" << endl;
+      cin >> response;
     }
 
   }

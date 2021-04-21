@@ -52,7 +52,7 @@ int main()
 
     }
 
-
+    
   //initialize the teleport
   int teleport_1[2];
   int teleport_2[2];

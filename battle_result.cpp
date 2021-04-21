@@ -14,22 +14,29 @@ using namespace std;
 
 int battle_result(int attack, int defense){
   int pos_attack = attack;
-  int pos_defense = defense - 5;
+  int pos_defense = defense;
 
-  if ((attack == 5) && (defense == 8)){
+  if (pos_attack > 9) {
+    pos_attack = pos_attack - 5;
+  }
+  if (pos_defense > 9) {
+    pos_defense = pos_defense - 5;
+  }
+
+  if ((pos_attack == 5) && (pos_defense == 8)) {
     return defense;
   }
-  else if ((attack == 8) && (defense == 5)){
+  else if ((pos_attack == 8) && (pos_defense == 5)) {
     return attack;
   }
-  else{
-    if (pos_attack > pos_defense){
+  else {
+    if (pos_attack > pos_defense) {
       return defense;
     }
-    else if (pos_attack < pos_defense){
+    else if (pos_attack < pos_defense) {
       return attack;
     }
-    else if (pos_attack == pos_defense){
+    else if (pos_attack == pos_defense) {
       return attack;
     }
   }
