@@ -33,19 +33,39 @@ struct profile
 
 profile player[3];
 
-void cancel_base_chess( int map[][100] )
+void cancel_base_chess(string player, int map[][100])
 {
-  if ( map[0][0] == 3 )
-    map[0][0] = 0;
+  switch (player) {
 
-  else if ( map[0][1] == 3 )
-    map[0][1] = 0;
+    case "p1":
+      if ( map[0][0] == 3 )
+        map[0][0] = 0;
 
-  else if ( map[1][0] == 3 )
-    map[1][0] = 0;
+      else if ( map[0][1] == 3 )
+        map[0][1] = 0;
 
-  else if ( map[1][1] == 3 )
-    map[1][1] = 0;
+      else if ( map[1][0] == 3 )
+        map[1][0] = 0;
+
+      else if ( map[1][1] == 3 )
+        map[1][1] = 0;
+      break;
+
+    case "p2":
+      if ( map[23][98] == 4 )
+        map[23][98] = 0;
+
+      else if ( map[23][99] == 4 )
+        map[23][99] = 0;
+
+      else if ( map[24][98] == 4 )
+        map[24][98] = 0;
+
+      else if ( map[24][99] == 0 )
+        map[24][99] = 0;
+
+  }
+
 }
 
 int check_identity ( int y, int x )
@@ -74,11 +94,9 @@ int check_identity ( int y, int x )
   else if ( y == player[2].assassin_y && x == player[1].assassin_x )
     return 13;
 
-  return -1;
-
 }
 
-bool check_teleporter ( int y, int x, int teleport_1[2], int teleport_2[2] )
+bool check_teleporter ( int y, int x, int int teleport_1[2], int teleport_2[2] )
 {
   if ( y == teleport_1[0] && x == teleport_1[1] )
     return true;
@@ -92,8 +110,6 @@ bool check_teleporter ( int y, int x, int teleport_1[2], int teleport_2[2] )
 
 void attack( int map[][100], int attacker, int teleport_1[2], int teleport_2[2], int O_COVERED, char attack_option, int y, int x )
 {
-
-    int defenser, winner;
   switch (attack_option) {
     case 'N':
     break;
@@ -395,7 +411,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
           cout << "Your chosen chess is deployed for the first time. No further moves" << endl;
         }
 
-        cancel_base_chess();
+        cancel_base_chess(p1);
         compass();
         print_map(map);
 
