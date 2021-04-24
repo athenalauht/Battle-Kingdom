@@ -7,6 +7,8 @@
 #include "map.h"
 #include "save.h"
 #include "battle_result.h"
+#include "save.h"
+#include "retrieve.h"
 
 #define PATH "\u2591"
 #define BORDER "\u2588"
@@ -828,7 +830,9 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
 
       case 'T':
         cout << "The game is ended" << endl;
-        // store_profile(player);
+        store_profile(player);
+        store_teleport(teleport_1, teleport_2);
+
         return true;
         break;
 
@@ -967,7 +971,8 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
 
       case 'T':
         cout << "The game is ended" << endl;
-        // store_profile(player);
+        store_profile(player);
+        store_teleport(teleport_1, teleport_2);
         return true;
         break;
 

@@ -10,9 +10,11 @@
 #include <stdlib.h>
 #include <time.h>
 
+#include "user_interface.h"
+
 using namespace std;
 
-bool retrieve(int map[][100], int teleport_1[2], int teleport_2[2]){
+bool retrieve(int map[][100], int teleport_1[2], int teleport_2[2], profile player[3]){
 
   //retrieve path
   initial_path(map);

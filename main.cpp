@@ -13,10 +13,9 @@
 #include "map.h"
 #include "teleport.h"
 #include "save.h"
-#include "retreive.h"
+#include "retrieve.h"
 #include "user_interface.h"
 #include "battle_result.h"
-
 
 #define PATH "\u2591"
 #define BORDER "\u2588"
@@ -28,7 +27,6 @@
 #define KNIGHT "\u2658"
 #define SOLDIER "\u2659"
 #define ASSASSIN "\u2657"
-
 
 using namespace std;
 
@@ -52,7 +50,7 @@ int main()
 
     }
 
-    
+
   //initialize the teleport
   int teleport_1[2];
   int teleport_2[2];
@@ -135,7 +133,7 @@ int main()
   cin >> choice;
 
   if (choice == 'Y') {
-    //retrieve data
+    retrieve(map, teleport_1, teleport_2, player);
   }
 
   cout << "This is the initial map setting. Player 1 will first start his/her round" << endl;
