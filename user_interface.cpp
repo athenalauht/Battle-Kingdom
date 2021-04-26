@@ -24,7 +24,7 @@
 using namespace std;
 
 
-
+// function to reveal the identity of player x's chess when it is the start his turn
 void reveal_chess (int x, int map[][100])
 {
   switch (x) {
@@ -74,6 +74,7 @@ void reveal_chess (int x, int map[][100])
   }
 }
 
+// function to hide the identity of player x's chess when it is the end of his turn
 void hide_chess(int x, int map[][100])
 {
   switch (x) {
@@ -125,6 +126,7 @@ void hide_chess(int x, int map[][100])
   }
 }
 
+// function to remove 1 chess from base if a chess is being deployed
 void cancel_base_chess(int player, int map[][100])
 {
   switch (player) {
@@ -153,13 +155,14 @@ void cancel_base_chess(int player, int map[][100])
       else if ( map[24][98] == 4 )
         map[24][98] = 0;
 
-      else if ( map[24][99] == 0 )
+      else if ( map[24][99] == 4 )
         map[24][99] = 0;
 
   }
 
 }
 
+// function to check the identity of the chess with coordinate x, y
 int check_identity ( int y, int x )
 {
   if ( y == player[1].emperor_y && x == player[1].emperor_x )
@@ -189,6 +192,7 @@ int check_identity ( int y, int x )
   return 0;
 }
 
+// function to check the loser between two chess in a battle
 void death ( int loser )
 {
   if ( loser == 5 ) {
@@ -225,6 +229,7 @@ void death ( int loser )
   }
 }
 
+// function to check whether the target location contains a teleporter
 bool check_teleporter ( int y, int x, int teleport_1[2], int teleport_2[2] )
 {
   if ( y == teleport_1[0] && x == teleport_1[1] )
@@ -237,6 +242,7 @@ bool check_teleporter ( int y, int x, int teleport_1[2], int teleport_2[2] )
     return false;
 }
 
+// function to intialize an attack
 void attack( int map[][100], int attacker, int teleport_1[2], int teleport_2[2], int O_COVERED, char attack_option, int *&y, int *&x )
 {
   int defenser;
@@ -394,6 +400,7 @@ void attack( int map[][100], int attacker, int teleport_1[2], int teleport_2[2],
 
 }
 
+// function to check possible attack directions
 bool check_attack( int O_COVERED, int map[][100], int *&y, int *&x )
 {
   const int SIZE_X = 100;
@@ -555,6 +562,7 @@ bool check_attack( int O_COVERED, int map[][100], int *&y, int *&x )
   }
 
 }
+// function to initialize the first move of a chess
 void first_move(int map[][100], int *&y, int *&x, int starting_point[2], int teleport_1[2], int teleport_2[2], int identity, int opponent_covered, bool &another_move, bool &another, int p)
 {
   reveal_chess(p, map);
@@ -628,6 +636,7 @@ void first_move(int map[][100], int *&y, int *&x, int starting_point[2], int tel
 
 }
 
+// function to coordinate the move of a chess
 bool ask_move(int map[][100], int *&y, int *&x, int &step, int teleport_1[2], int teleport_2[2], int identity, int opponent_covered)
 {
   cout << "the direction of the move?" << endl;
@@ -646,7 +655,7 @@ bool ask_move(int map[][100], int *&y, int *&x, int &step, int teleport_1[2], in
 
   cout << "how many step do you want to move?" << endl;
 
-  cin >> step;
+  cin >> step;    // Assume the user will input an integer
 
   switch (char_dir) {
     case 'N':
@@ -799,6 +808,7 @@ bool ask_move(int map[][100], int *&y, int *&x, int &step, int teleport_1[2], in
 
 }
 
+// function to control player 1's action
 bool player1_interface( int player1_starting_point[2], int map[][100], int teleport_1[2], int teleport_2[2] )
 {
   reveal_chess(1, map);
@@ -929,6 +939,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
   return false;
 }
 
+// function to control player 2's action
 bool player2_interface( int player2_starting_point[2], int map[][100], int teleport_1[2], int teleport_2[2] )
 {
   reveal_chess(2, map);

@@ -60,17 +60,17 @@ int main()
   const int SIZE_Y = 25;
 
 
-    int map[25][100];
+  int map[25][100];
 
-    for (int y = 0; y < SIZE_Y; ++y){
+  for (int y = 0; y < SIZE_Y; ++y){
 
-      for (int x = 0; x < SIZE_X; ++x){
+    for (int x = 0; x < SIZE_X; ++x){
 
-        map[y][x] = 0;
-
-      }
+      map[y][x] = 0;
 
     }
+
+  }
 
   //initialize the teleport
   int teleport_1[2];
@@ -99,25 +99,25 @@ int main()
   }
 
   if (choice == 'Y') {
-    if (!retrieve(map, teleport_1, teleport_2, player,count)){
+
+    if (!retrieve(map, teleport_1, teleport_2, player,count)) {
       cout << "Sorry, there are no saved games.\nLets start a new match!\n";
       cout << "This is the initial map setting. Player 1 will first start his/her round" << endl;
       create_path();
       initial_path(map);
       create_teleport(teleport_1, teleport_2, map);
-      // to locate the starting point of each player
-
-
     }
-    else{
+
+    else {
       cout << "The saved game is retrieved.\nYou can start now!" << endl;
       map[teleport_1[0]][teleport_1[1]] = 9;
       map[teleport_2[0]][teleport_2[1]] = 9;
       base_chess_retrieve(map,player);
-
     }
+
   }
-  else{
+
+  else {
     create_path();
     initial_path(map);
     create_teleport(teleport_1, teleport_2, map);
@@ -144,7 +144,6 @@ int main()
 
 
   // to start the game
-
   bool termination = false;
   while (!termination) {
 

@@ -24,6 +24,7 @@
 
 using namespace std;
 
+// function to display the game title
 void game_title()
 {
   cout << "    " << A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A<< endl;
@@ -49,6 +50,7 @@ void game_title()
   cout << endl;
 }
 
+// function to display the game rules
 void game_rules()
 {
   cout << C << " Game Description" << endl;
@@ -103,6 +105,7 @@ void game_rules()
   )" << endl;
 }
 
+// function to display the dead message
 void dead_message(int x)
 {
   if (x == 1) {
@@ -171,6 +174,7 @@ void dead_message(int x)
   }
 }
 
+// function to display the compass
 void compass()
 {
   cout << "  " << "N" << endl;
@@ -178,6 +182,7 @@ void compass()
   cout << "  " << "S" << endl;
 }
 
+// function to display the chess index
 void chess_identity()
 {
   cout << EMPEROR << " = emperor" << endl;
