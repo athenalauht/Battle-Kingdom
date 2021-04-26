@@ -9,10 +9,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "mystruct.h"
 
 #include "user_interface.h"
 
 using namespace std;
+
 
 bool retrieve(int map[][100], int teleport_1[2], int teleport_2[2], profile player[3]){
 

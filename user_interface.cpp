@@ -9,6 +9,7 @@
 #include "battle_result.h"
 #include "save.h"
 #include "retrieve.h"
+#include "mystruct.h"
 
 #define PATH "\u2591"
 #define BORDER "\u2588"
@@ -22,19 +23,7 @@
 
 using namespace std;
 
-struct profile
-{
-  int emperor_x;
-  int emperor_y;
-  int knight_x;
-  int knight_y;
-  int soldier_x;
-  int soldier_y;
-  int assassin_x;
-  int assassin_y;
-};
 
-profile player[3];
 
 void reveal_chess (int x, int map[][100])
 {
@@ -824,7 +813,6 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
     cout << "Type (E / K / S / A) to move, T to save and terminate the game" << endl;
     cout << "\n" << endl;
     cin >> chosen_chess;
-
 
     switch (chosen_chess) {
 

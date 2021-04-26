@@ -9,9 +9,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "user_interface.h"
+#include "mystruct.h"
+
 
 using namespace std;
+
 
 void store_profile(profile player[3]){
 
