@@ -14,7 +14,7 @@
 
 using namespace std;
 
-
+//save the position of the chess into txt
 void store_profile(profile player[3]){
 
   //open p1.txt
@@ -42,6 +42,7 @@ void store_profile(profile player[3]){
 
 }
 
+//save the teleport location into txt
 void store_teleport(int teleport_1[2],int teleport_2[2]){
 
   //open teleport.txt
@@ -55,6 +56,7 @@ void store_teleport(int teleport_1[2],int teleport_2[2]){
 
 }
 
+//save and store the following player in turn  to play the game
 void store_count(int x){
   ofstream count;
   count.open("count.txt");

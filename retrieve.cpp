@@ -15,6 +15,7 @@
 
 using namespace std;
 
+//retrieve the corner chesses
 void base_chess_retrieve(int map[][100], profile player[3]){
 
   int count = 0;
@@ -75,6 +76,7 @@ void base_chess_retrieve(int map[][100], profile player[3]){
 
 }
 
+//retrieve all the arrays
 bool retrieve(int map[][100], int teleport_1[2], int teleport_2[2], profile player[3], int &count){
 
   //return 1 if fail

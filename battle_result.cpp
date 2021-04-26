@@ -12,6 +12,7 @@
 
 using namespace std;
 
+//for saving the battle result
 int battle_result(int attack, int defense){
   int pos_attack = attack;
   int pos_defense = defense;
@@ -23,6 +24,7 @@ int battle_result(int attack, int defense){
     pos_defense = pos_defense - 5;
   }
 
+  //for same level of chess attacking
   if ((pos_attack == 5) && (pos_defense == 8)) {
     return defense;
   }

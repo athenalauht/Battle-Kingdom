@@ -23,6 +23,7 @@
 
 using namespace std;
 
+//random generate the path and save to path.txt
 void create_path() {
 
  //map size of 75*75
@@ -196,6 +197,7 @@ void create_path() {
 
 }
 
+//set up border and the path in the map array
 void initial_path( int map[][100]){
 
   const int SIZE_X = 100;
@@ -297,6 +299,7 @@ void initial_path( int map[][100]){
 
 }
 
+//printing the output map
 void print_map( int map[][100]) {
 
   const int SIZE_X = 100;

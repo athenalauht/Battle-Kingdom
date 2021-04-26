@@ -11,6 +11,7 @@
 
 using namespace std;
 
+//random generate teleport in the map
 void create_teleport( int teleport_1[2], int teleport_2[2], int map[][100]){
 
   const int SIZE_X = 100;
