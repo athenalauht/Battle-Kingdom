@@ -802,7 +802,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
   int * current_y = NULL;
   bool another = true;
   int step;
-
+  int identity;
   while (another_move) {
     reveal_chess(1, map);
     another_move = false;
@@ -819,6 +819,14 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
     cout << "\n" << endl;
     cin >> chosen_chess;
 
+    while (chosen_chess != 'E' && chosen_chess != 'K' && chosen_chess != 'S' && chosen_chess != 'A' && chosen_chess != 'T') {
+      cout << "Invalid command, please try again" << endl;
+      cout << "Player 1, which chess would you like to move?" << endl;
+      cout << "Emperor / Knight / Soldier / Assassin" << endl;
+      cout << "Type (E / K / S / A) to move, T to save and terminate the game" << endl;
+      cin >> chosen_chess;
+    }
+
     switch (chosen_chess) {
 
       case 'T':
@@ -832,101 +840,76 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
       case 'E':
         current_x = &player[1].emperor_x;
         current_y = &player[1].emperor_y;
-
-        if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
-
-          first_move( map, current_y, current_x, player1_starting_point, teleport_1, teleport_2, 5, 4, another_move, another, 1);
-          hide_chess(1, map);
-        }
-
-        else if (( *current_x == -1 ) && ( *current_y == -1 )) {
-          cout << "Your chess is already dead. Please choose another chess" << endl;
-          another_move = true;
-          another = false;
-        }
-
-        else {
-          another_move = ask_move(map, current_y, current_x, step, teleport_1, teleport_2, 5, 4);
-          hide_chess(1, map);
-        }
-
+        identity = 5;
         break;
-
       case 'K':
         current_x = &player[1].knight_x;
         current_y = &player[1].knight_y;
-
-        if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
-
-          first_move( map, current_y, current_x, player1_starting_point, teleport_1, teleport_2, 6, 4, another_move, another, 1);
-          hide_chess(1, map);
-        }
-
-        else if (( *current_x == -1 ) && ( *current_y == -1 )) {
-          cout << "Your chess is already dead. Please choose another chess" << endl;
-          another_move = true;
-          another = false;
-        }
-
-        else {
-          ask_move(map, current_y, current_x, step, teleport_1, teleport_2, 6, 4);
-          hide_chess(1, map);
-        }
+        identity = 6;
         break;
 
       case 'S':
         current_x = &player[1].soldier_x;
         current_y = &player[1].soldier_y;
-
-        if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
-
-          first_move( map, current_y, current_x, player1_starting_point, teleport_1, teleport_2, 7, 4, another_move, another, 1);
-          hide_chess(1, map);
-        }
-
-        else if (( *current_x == -1 ) && ( *current_y == -1 )) {
-          cout << "Your chess is already dead. Please choose another chess" << endl;
-          another_move = true;
-          another = false;
-        }
-
-        else {
-          ask_move(map, current_y, current_x, step, teleport_1, teleport_2, 7, 4);
-          hide_chess(1, map);
-        }
+        identity = 7;
         break;
 
       case 'A':
         current_x = &player[1].assassin_x;
         current_y = &player[1].assassin_y;
-
-        if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
-
-          first_move( map, current_y, current_x, player1_starting_point, teleport_1, teleport_2, 8, 4, another_move, another, 1);
-          hide_chess(1, map);
-        }
-
-        else if (( *current_x == -1 ) && ( *current_y == -1 )) {
-          cout << "Your chess is already dead. Please choose another chess" << endl;
-          another_move = true;
-          another = false;
-        }
-
-        else {
-          ask_move(map, current_y, current_x, step, teleport_1, teleport_2, 8, 4);
-          hide_chess(1, map);
-        }
+        identity = 8;
         break;
 
       default:
       cout << "Sorry, wrong input :(" << endl;
       another_move = true;
+    }
 
+    if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
+
+      first_move( map, current_y, current_x, player1_starting_point, teleport_1, teleport_2, identity, 4, another_move, another, 1);
+      hide_chess(1, map);
+    }
+
+    else if (( *current_x == -1 ) && ( *current_y == -1 )) {
+      cout << "Your chess is already dead. Please choose another chess" << endl;
+      another_move = true;
+      another = false;
+    }
+
+    else {
+      another_move = ask_move(map, current_y, current_x, step, teleport_1, teleport_2, identity, 4);
+      hide_chess(1, map);
     }
 
     if ( *current_x == 97 ) {
-      cout << "player 1 win the game" << endl;
+      cout << "As player 2's boarder has been invaded by player 1" << endl;
+      cout << "player 1 wins the game" << endl;
       return true;
+    }
+
+    if (player[1].emperor_x == -1 && player[1].emperor_y == -1) {
+      if ( player[1].knight_x == -1 && player[1].knight_y == -1 ) {
+        if ( player[1].soldier_x != -1 && player[1].soldier_y != -1 ) {
+          if ( player[1].assassin_x != -1 && player[1].assassin_y != -1 ) {
+            cout << "As all the chess of player 1 have been terminated" << endl;
+            cout << "Player 2 wins the game" << endl;
+            return true;
+          }
+        }
+      }
+    }
+
+    if (player[2].emperor_x == -1 && player[2].emperor_y == -1) {
+      if ( player[2].knight_x == -1 && player[2].knight_y == -1 ) {
+        if ( player[2].soldier_x != -1 && player[2].soldier_y != -1 ) {
+          if ( player[2].assassin_x != -1 && player[2].assassin_y != -1 ) {
+            cout << "As all the chess of player 2 have been terminated" << endl;
+            cout << "Player 1 wins the game" << endl;
+            return true;
+          }
+        }
+      }
     }
 
     if ( another && !another_move) {
@@ -949,6 +932,7 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
   int * current_x = NULL;
   int * current_y = NULL;
   int step;
+  int identity;
 
   while (another_move) {
     reveal_chess(2, map);
@@ -966,6 +950,15 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
     cout << "\n" << endl;
     cin >> chosen_chess;
 
+    while (chosen_chess != 'E' && chosen_chess != 'K' && chosen_chess != 'S' && chosen_chess != 'A' && chosen_chess != 'T') {
+      cout << "Invalid command, please try again" << endl;
+      cout << "Player 2, which chess would you like to move?" << endl;
+      cout << "Emperor / Knight / Soldier / Assassin" << endl;
+      cout << "Type (E / K / S / A) to move, T to save and terminate the game" << endl;
+      cin >> chosen_chess;
+    }
+
+
     switch (chosen_chess) {
 
       case 'T':
@@ -979,97 +972,48 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
       case 'E':
         current_x = &player[2].emperor_x;
         current_y = &player[2].emperor_y;
-
-        if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
-
-          first_move( map, current_y, current_x, player1_starting_point, teleport_1, teleport_2, 10, 3, another_move, another, 2);
-          hide_chess(2, map);
-        }
-
-        else if (( *current_x == -1 ) && ( *current_y == -1 )) {
-          cout << "Your chess is already dead. Please choose another chess" << endl;
-          another_move = true;
-          another = false;
-        }
-
-        else {
-          ask_move(map, current_y, current_x, step, teleport_1, teleport_2, 10, 3);
-          hide_chess(2, map);
-        }
-
+        identity = 10;
         break;
 
       case 'K':
         current_x = &player[2].knight_x;
         current_y = &player[2].knight_y;
-
-        if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
-
-          first_move( map, current_y, current_x, player1_starting_point, teleport_1, teleport_2, 11, 3, another_move, another, 2);
-          hide_chess(2, map);
-        }
-
-        else if (( *current_x == -1 ) && ( *current_y == -1 )) {
-          cout << "Your chess is already dead. Please choose another chess" << endl;
-          another_move = true;
-          another = false;
-        }
-
-        else {
-          ask_move(map, current_y, current_x, step, teleport_1, teleport_2, 11, 3);
-          hide_chess(2, map);
-        }
+        identity = 11;
         break;
 
       case 'S':
         current_x = &player[2].soldier_x;
         current_y = &player[2].soldier_y;
-
-        if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
-
-          first_move( map, current_y, current_x, player1_starting_point, teleport_1, teleport_2, 12, 3, another_move, another, 2);
-          hide_chess(2, map);
-        }
-
-        else if (( *current_x == -1 ) && ( *current_y == -1 )) {
-          cout << "Your chess is already dead. Please choose another chess" << endl;
-          another_move = true;
-          another = false;
-        }
-
-        else {
-          ask_move(map, current_y, current_x, step, teleport_1, teleport_2, 12, 3);
-          hide_chess(2, map);
-        }
+        identity = 12;
         break;
 
       case 'A':
         current_x = &player[2].assassin_x;
         current_y = &player[2].assassin_y;
-
-        if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
-
-          first_move( map, current_y, current_x, player1_starting_point, teleport_1, teleport_2, 13, 3, another_move, another, 2);
-          hide_chess(2, map);
-        }
-
-        else if (( *current_x == -1 ) && ( *current_y == -1 )) {
-          cout << "Your chess is already dead. Please choose another chess" << endl;
-          another_move = true;
-          another = false;
-        }
-
-        else {
-          ask_move(map, current_y, current_x, step, teleport_1, teleport_2, 13, 3);
-          hide_chess(2, map);
-        }
+        identity = 13;
         break;
 
       default:
       cout << "Sorry, wrong input :(" << endl;
       another_move = true;
 
+    }
 
+    if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
+
+      first_move( map, current_y, current_x, player1_starting_point, teleport_1, teleport_2, identity, 3, another_move, another, 2);
+      hide_chess(2, map);
+    }
+
+    else if (( *current_x == -1 ) && ( *current_y == -1 )) {
+      cout << "Your chess is already dead. Please choose another chess" << endl;
+      another_move = true;
+      another = false;
+    }
+
+    else {
+      another_move = ask_move(map, current_y, current_x, step, teleport_1, teleport_2, identity, 3);
+      hide_chess(2, map);
     }
 
     if ( *current_x == 2 ) {
@@ -1077,6 +1021,30 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
       return true;
     }
 
+    if (player[1].emperor_x == -1 && player[1].emperor_y == -1) {
+      if ( player[1].knight_x == -1 && player[1].knight_y == -1 ) {
+        if ( player[1].soldier_x != -1 && player[1].soldier_y != -1 ) {
+          if ( player[1].assassin_x != -1 && player[1].assassin_y != -1 ) {
+            cout << "As all the chess of player 1 have been terminated" << endl;
+            cout << "Player 2 wins the game" << endl;
+            return true;
+          }
+        }
+      }
+    }
+
+    if (player[2].emperor_x == -1 && player[2].emperor_y == -1) {
+      if ( player[2].knight_x == -1 && player[2].knight_y == -1 ) {
+        if ( player[2].soldier_x != -1 && player[2].soldier_y != -1 ) {
+          if ( player[2].assassin_x != -1 && player[2].assassin_y != -1 ) {
+            cout << "As all the chess of player 2 have been terminated" << endl;
+            cout << "Player 1 wins the game" << endl;
+            return true;
+          }
+        }
+      }
+    }
+    
     if (another) {
       char response;
       cout << "Player 2, are you ready?" << endl;

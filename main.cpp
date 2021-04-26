@@ -31,7 +31,6 @@
 
 using namespace std;
 
-
 int main()
 {
   int player1_starting_point[2];
@@ -72,7 +71,6 @@ int main()
 
     }
 
-
   //initialize the teleport
   int teleport_1[2];
   int teleport_2[2];
@@ -86,20 +84,18 @@ int main()
 
   //--------------------------------------------
 
-  // dead_message(1);
-
-  //--------------------------------------------
-
-
-
-  //--------------------------------------------
-
-
   // to retrieve previous record
   char choice;
+  int count = 1;
+
   cout << "Do you want to retrieve previous game data? ( Y / N )" << endl;
   cin >> choice;
-  int count = 1;
+
+  while (choice != 'Y' && choice != 'N') {
+    cout << "Invalid command, please try again" << endl;
+    cout << "Do you want to retrieve previous game data? ( Y / N )" << endl;
+    cin >> choice;
+  }
 
   if (choice == 'Y') {
     if (!retrieve(map, teleport_1, teleport_2, player,count)){
@@ -138,6 +134,7 @@ int main()
     create_path();
     initial_path(map);
     create_teleport(teleport_1, teleport_2, map);
+    cout << "This is the initial map setting. Player 1 will first start his/her round" << endl;
     // to locate the starting point of each player
 
 
@@ -160,8 +157,6 @@ int main()
 
   }
 
-
-
   // to start the game
 
   bool termination = false;
@@ -176,7 +171,6 @@ int main()
       termination = player1_interface( player1_starting_point, map, teleport_1, teleport_2 );
       count += 1;
     }
-
 
   }
   store_count(count - 1);
