@@ -209,7 +209,7 @@ void death ( int loser )
   }
   else if ( loser == 10 ) {
     player[2].emperor_y = -1;
-    player[1].emperor_x = -1;
+    player[2].emperor_x = -1;
   }
   else if ( loser == 11 ) {
     player[2].knight_y = -1;
@@ -918,7 +918,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
       }
     }
 
-    if ( another && !another_move) {
+    if ( another ) {
       char response;
       cout << "Player 1, are you ready?" << endl;
       cout << "Please press Y when you are ready" << endl;

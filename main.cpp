@@ -29,6 +29,7 @@
 #define SOLDIER "\u2659"
 #define ASSASSIN "\u2657"
 
+
 using namespace std;
 
 int main()
@@ -140,6 +141,7 @@ int main()
       break;
     }
   }
+
 
   // to start the game
 
