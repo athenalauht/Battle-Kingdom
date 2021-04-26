@@ -64,10 +64,10 @@ Players can choose to retrieve previously saved game progress or to start a new 
 **Element 5: Program codes in multiple files**\
 •	main.cpp includes the selection of game modes and all the required header files\
 •	map.h contains functions for creating random initialization of the map\
-•	save.h contains functions for saving the game progress
+•	save.h contains functions for saving the game progress\
 •	user_interface.h contains functions to guide player’s action by displaying corresponding information for asking input and coordinate the chess movement\
 •	teleport.h contains functions for creating teleporters\
 •	retrieve.h contains functions for retrieving previous game data\
 •	display.h contains functions for displaying game graphics\
-•	battle_result.h contains functions for outputting the winner between the attack chess and defense chess
+•	battle_result.h contains functions for outputting the winner between the attack chess and defense chess\
 •	mystruct.h contains the struct for the player profile
