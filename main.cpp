@@ -34,9 +34,11 @@ using namespace std;
 
 int main()
 {
+  // initialize the array to store the starting point of the two players
   int player1_starting_point[2];
   int player2_starting_point[2];
 
+  // to set the initial coordinates of all chess to be (0, 0)
   player[1].emperor_x = 0;
   player[1].emperor_y = 0;
   player[1].knight_x = 0;
@@ -53,7 +55,8 @@ int main()
   player[2].soldier_x = 0;
   player[2].soldier_y = 0;
   player[2].assassin_x = 0;
-  player[2].assassin_y = 0;
+  player[2].assassin_y = 0
+
   //initialize the map
 
   const int SIZE_X = 100;
@@ -72,7 +75,7 @@ int main()
 
   }
 
-  //initialize the teleport
+  //initialize the teleporter position
   int teleport_1[2];
   int teleport_2[2];
 

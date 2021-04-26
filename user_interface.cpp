@@ -248,9 +248,12 @@ void attack( int map[][100], int attacker, int teleport_1[2], int teleport_2[2],
   int defenser;
   int winner;
   switch (attack_option) {
+
+    // to attack the enemy in the north direction
     case 'N':
       for (int i = 1; i <= 5; ++i) {
 
+        // if the enemy is within 1 step
         if ( map[(*y) - i][*x] == O_COVERED ) {
 
           defenser = check_identity((*y) - i, *x);
@@ -285,6 +288,7 @@ void attack( int map[][100], int attacker, int teleport_1[2], int teleport_2[2],
       }
       break;
 
+    // to attack the enemy in the east direction
     case 'E':
       for (int i = 1; i <= 5; ++i) {
 
@@ -322,6 +326,7 @@ void attack( int map[][100], int attacker, int teleport_1[2], int teleport_2[2],
       }
       break;
 
+    // to attack the enemy in the south direction
     case 'S':
       for (int i = 1; i <= 5; ++i) {
 
@@ -359,6 +364,7 @@ void attack( int map[][100], int attacker, int teleport_1[2], int teleport_2[2],
       }
       break;
 
+    // to attack the enemy in the west direction
     case 'W':
       for (int i = 1; i <= 5; ++i) {
 
@@ -455,6 +461,7 @@ bool check_attack( int O_COVERED, int map[][100], int *&y, int *&x )
   }
 
   check_fin_1:
+
   // check for possible east attack
 
   temp_attack = *x + 5;
@@ -488,6 +495,7 @@ bool check_attack( int O_COVERED, int map[][100], int *&y, int *&x )
   }
 
   check_fin_2:
+
   // check for possible north attack
 
   temp_attack = (*y) - 5;
@@ -521,6 +529,7 @@ bool check_attack( int O_COVERED, int map[][100], int *&y, int *&x )
   }
 
   check_fin_3:
+
   // check for possible south attack
 
   temp_attack = (*y) + 5;
@@ -566,6 +575,8 @@ bool check_attack( int O_COVERED, int map[][100], int *&y, int *&x )
 void first_move(int map[][100], int *&y, int *&x, int starting_point[2], int teleport_1[2], int teleport_2[2], int identity, int opponent_covered, bool &another_move, bool &another, int p)
 {
   reveal_chess(p, map);
+
+  // to check whether the starting point is occupied
   if ( map[starting_point[1]][starting_point[0]] != 1 && map[starting_point[1]][starting_point[0]] != 9) {
     cout << "The starting point is occupied, please choose another move" << endl;
     another_move = true;
@@ -574,6 +585,7 @@ void first_move(int map[][100], int *&y, int *&x, int starting_point[2], int tel
     return;
   }
 
+  // to check whether the starting point contains a teleporter
   if ( check_teleporter (starting_point[1], starting_point[0], teleport_1, teleport_2 ) ) {
 
     if ( ( starting_point[1] == teleport_1[0] ) && ( starting_point[0] == teleport_1[1] ) ) {
@@ -599,6 +611,7 @@ void first_move(int map[][100], int *&y, int *&x, int starting_point[2], int tel
     cout << "The starting point of your side contains a teleporter, your chosen chess is being teleported to the other side" << endl;
   }
 
+  // to check whether the starting point is a normal path
   if ( map[starting_point[1]][starting_point[0]] == 1 ) {
 
     *x = starting_point[0];
@@ -611,10 +624,13 @@ void first_move(int map[][100], int *&y, int *&x, int starting_point[2], int tel
   }
 
   cancel_base_chess(p, map);
+
+  // game display
   compass();
   print_map(map);
   chess_identity();
 
+  // to check whether there is any possible attack
   if (check_attack(opponent_covered, map, y, x)) {
     char attack_option;
     cout << "please choose the direction to attack, or type X to not attack." << endl;
@@ -639,6 +655,7 @@ void first_move(int map[][100], int *&y, int *&x, int starting_point[2], int tel
 // function to coordinate the move of a chess
 bool ask_move(int map[][100], int *&y, int *&x, int &step, int teleport_1[2], int teleport_2[2], int identity, int opponent_covered)
 {
+  // input the direction
   cout << "the direction of the move?" << endl;
 
   char char_dir;
@@ -653,6 +670,7 @@ bool ask_move(int map[][100], int *&y, int *&x, int &step, int teleport_1[2], in
     cin >> char_dir;
   }
 
+  // input the number of steps to move
   cout << "how many step do you want to move?" << endl;
 
   cin >> step;    // Assume the user will input an integer
@@ -740,7 +758,7 @@ bool ask_move(int map[][100], int *&y, int *&x, int &step, int teleport_1[2], in
 
 
 
-
+    // check teleporter
     if ( check_teleporter(*y, *x, teleport_1, teleport_2) ) {
       map[*y][*x] = 9;
     }
@@ -782,10 +800,12 @@ bool ask_move(int map[][100], int *&y, int *&x, int &step, int teleport_1[2], in
 
     }
 
+    // game display
     compass();
     print_map(map);
     chess_identity();
 
+    // check possible attack
     if (check_attack(opponent_covered, map, y, x)) {
       char attack_option;
       cout << "please choose the direction to attack, or type X to not attack" << endl;
@@ -799,7 +819,7 @@ bool ask_move(int map[][100], int *&y, int *&x, int &step, int teleport_1[2], in
     else {
       cout << "you do not have any target to attack" << endl;
     }
-
+    
     final:
     cout << "your chess identity will be hidden now" << endl;
     cout << endl;
