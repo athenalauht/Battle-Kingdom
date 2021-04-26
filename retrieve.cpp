@@ -1,5 +1,5 @@
 // Group Project -- Group 13
-// Description: programme to output the saved game progress
+// Description: programme to retrieve the saved game progress
 
 #include <iostream>
 #include <cctype>
