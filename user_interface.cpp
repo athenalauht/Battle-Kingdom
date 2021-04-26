@@ -471,7 +471,7 @@ bool check_attack( int O_COVERED, int map[][100], int *&y, int *&x )
 
         if ( map[*y][j] != 1 && map[*y][j] != 9 ) {
 
-          goto check_fin_1;
+          goto check_fin_2;
         }
       }
       cout << "you can choose to attack an opponent chess in east direction (E)" << endl;
@@ -526,7 +526,7 @@ bool check_attack( int O_COVERED, int map[][100], int *&y, int *&x )
     cout << "you can choose to attack an opponent chess in south direction (S)" << endl;
     can_attack = true;
 
-    goto check_fin_3;
+    goto check_fin_4;
   }
 
   for ( int i = *y; i <= attack_max_y; ++i ) {
@@ -609,7 +609,7 @@ void first_move(int map[][100], int *&y, int *&x, int starting_point[2], int tel
 
   if (check_attack(opponent_covered, map, y, x)) {
     char attack_option;
-    cout << "please choose the direction to attack, or type X to not attack" << endl;
+    cout << "please choose the direction to attack, or type X to not attack." << endl;
     cin >> attack_option;
     if (attack_option == 'X') {
       goto final;
@@ -637,6 +637,12 @@ bool ask_move(int map[][100], int *&y, int *&x, int &step, int teleport_1[2], in
   int max_move;
 
   cin >> char_dir;
+
+  while (char_dir != 'E' && char_dir != 'N' && char_dir != 'S' && char_dir != 'W') {
+    cout << "Invalid command, please try again" << endl;
+    cout << "the direction of the move?" << endl;
+    cin >> char_dir;
+  }
 
   cout << "how many step do you want to move?" << endl;
 
@@ -915,7 +921,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
     if ( another && !another_move) {
       char response;
       cout << "Player 1, are you ready?" << endl;
-      cout << "Press Y to pass the control to player 2" << endl;
+      cout << "Please press Y when you are ready" << endl;
       cin >> response;
     }
 
@@ -923,7 +929,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
   return false;
 }
 
-bool player2_interface( int player1_starting_point[2], int map[][100], int teleport_1[2], int teleport_2[2] )
+bool player2_interface( int player2_starting_point[2], int map[][100], int teleport_1[2], int teleport_2[2] )
 {
   reveal_chess(2, map);
   hide_chess(1,map);
@@ -1001,7 +1007,7 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
 
     if ( ( *current_x == 0 ) && ( *current_y == 0 ) ) {
 
-      first_move( map, current_y, current_x, player1_starting_point, teleport_1, teleport_2, identity, 3, another_move, another, 2);
+      first_move( map, current_y, current_x, player2_starting_point, teleport_1, teleport_2, identity, 3, another_move, another, 2);
       hide_chess(2, map);
     }
 
@@ -1044,11 +1050,11 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
         }
       }
     }
-    
+
     if (another) {
       char response;
       cout << "Player 2, are you ready?" << endl;
-      cout << "Press Y to pass the control to player 1" << endl;
+      cout << "Please press Y when you are ready" << endl;
       cin >> response;
     }
 

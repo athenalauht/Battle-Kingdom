@@ -106,21 +106,7 @@ int main()
       create_teleport(teleport_1, teleport_2, map);
       // to locate the starting point of each player
 
-      for (int i = 0; i < 23; ++i) {
-        if (map[i][2] == 1 || map[i][2] == 9) {
-          player1_starting_point[0] = 2;
-          player1_starting_point[1] = i;
-          break;
-        }
-      }
 
-      for (int i = 22; i > 1; --i) {
-        if (map[i][97] == 1 || map[i][2] == 9) {
-          player2_starting_point[0] = 97;
-          player2_starting_point[1] = i;
-          break;
-        }
-      }
     }
     else{
       cout << "The saved game is retrieved.\nYou can start now!" << endl;
@@ -135,26 +121,24 @@ int main()
     initial_path(map);
     create_teleport(teleport_1, teleport_2, map);
     cout << "This is the initial map setting. Player 1 will first start his/her round" << endl;
-    // to locate the starting point of each player
 
+  }
 
-    for (int i = 0; i < 23; ++i) {
-      if (map[i][2] == 1 || map[i][2] == 9) {
-        player1_starting_point[0] = 2;
-        player1_starting_point[1] = i;
-        break;
-      }
+  // to locate the starting point of each player
+  for (int i = 0; i < 23; ++i) {
+    if (map[i][2] == 1 || map[i][2] == 9) {
+      player1_starting_point[0] = 2;
+      player1_starting_point[1] = i;
+      break;
     }
+  }
 
-
-    for (int i = 22; i > 1; --i) {
-      if (map[i][97] == 1 || map[i][2] == 9) {
-        player2_starting_point[0] = 97;
-        player2_starting_point[1] = i;
-        break;
-      }
+  for (int i = 22; i > 1; --i) {
+    if (map[i][97] == 1 || map[i][2] == 9) {
+      player2_starting_point[0] = 97;
+      player2_starting_point[1] = i;
+      break;
     }
-
   }
 
   // to start the game

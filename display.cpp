@@ -61,7 +61,7 @@ void game_rules()
   cout << C << " Game Rule" << endl;
   cout << "Each player will have 4 chess pieces to deploy." << "\n" << endl;
   cout << "Initially, all pieces will remain inside the player’s castle. Players will take turns to move the pieces." << "\n" << endl;
-  cout << "In each round, player will choose 1 piece and decide the direction (North, East, South, West) and the number of steps (1, 2, 3, 4, 5) to move." << "\n" << endl;
+  cout << "In each round, player will choose 1 piece and decide the direction (North, East, South, West) and the number of steps to move." << "\n" << endl;
   cout << "However, the piece can only walk straight within a turn (i.e. the player can only walk horizontally or vertically)" << "\n" << endl;
   cout << "After moving the piece, if there is an enemy piece along a vertical path or a horizontal path, the player can choose whether to attack or not." << "\n" << endl;
   cout << "\n""\n";
@@ -89,8 +89,6 @@ void game_rules()
   R"(
   Furthermore, the path contains 2 hidden teleporters, when any of the pieces step into one of the teleporter, it will be transported to the other end of the teleporter
   (i.e. when a chess steps into (3,5) and instantly being transported to (7,4), both player should realize the actual location of the two teleporters).
-  If the other end of the teleporter is occupied by a piece, the chess will not be teleported when it steps into the teleporter.
-  The location of the two teleporters will change after being used for 3 times.
   )";
   cout << "\n""\n""\n";
 
