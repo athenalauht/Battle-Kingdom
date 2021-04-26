@@ -30,8 +30,7 @@ The identity of player 1’s own pieces will be revealed when in player 1’s tu
 Furthermore, the path contains 2 teleporters, when any of the pieces step into one of the teleporter, it will be transported to the other end of the teleporter (i.e. when a chess steps into (3,5), it will instantly being transported to (7,4)).
 
 The game will terminate in either situation\
-Case 1: All chess pieces are being killed. When a chess piece is being killed, the screen\
-        display “player i’s Emperor is killed”.\
+Case 1: All chess pieces are being killed.\
 Case 2: Any chess piece of the enemy enters your base.
 
 Players can choose to retrieve previously saved game progress or to start a new game.
