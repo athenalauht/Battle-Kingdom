@@ -5,5 +5,6 @@
 
 void store_profile();
 void store_teleport();
+void store_count();
 
 #endif

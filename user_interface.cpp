@@ -557,10 +557,12 @@ bool check_attack( int O_COVERED, int map[][100], int *&y, int *&x )
 }
 void first_move(int map[][100], int *&y, int *&x, int starting_point[2], int teleport_1[2], int teleport_2[2], int identity, int opponent_covered, bool &another_move, bool &another, int p)
 {
+  reveal_chess(p, map);
   if ( map[starting_point[1]][starting_point[0]] != 1 && map[starting_point[1]][starting_point[0]] != 9) {
     cout << "The starting point is occupied, please choose another move" << endl;
     another_move = true;
     another = false;
+
     return;
   }
 
@@ -626,7 +628,7 @@ void first_move(int map[][100], int *&y, int *&x, int starting_point[2], int tel
 
 }
 
-void ask_move(int map[][100], int *&y, int *&x, int &step, int teleport_1[2], int teleport_2[2], int identity, int opponent_covered)
+bool ask_move(int map[][100], int *&y, int *&x, int &step, int teleport_1[2], int teleport_2[2], int identity, int opponent_covered)
 {
   cout << "the direction of the move?" << endl;
 
@@ -640,14 +642,13 @@ void ask_move(int map[][100], int *&y, int *&x, int &step, int teleport_1[2], in
 
   cin >> step;
 
-  bool allow_move = true;
-
   switch (char_dir) {
     case 'N':
 
       for (int i = 1; i < step + 1; ++i){
         if ((map[(*y) - i][*x] != 1) && (map[(*y) - i][*x] != 9)){
-          allow_move = false;
+          cout << "Sorry, this move is invalid T_T\n" << endl;
+          return true;
         }
       }
 
@@ -657,7 +658,8 @@ void ask_move(int map[][100], int *&y, int *&x, int &step, int teleport_1[2], in
 
       for (int i = 1; i < step + 1; ++i){
         if ((map[*y][(*x) + i] != 1) && (map[*y][(*x) + i] != 9)){
-          allow_move = false;
+          cout << "Sorry, this move is invalid T_T\n" << endl;
+          return true;
         }
       }
 
@@ -667,7 +669,8 @@ void ask_move(int map[][100], int *&y, int *&x, int &step, int teleport_1[2], in
 
       for (int i = 1; i < step + 1; ++i){
         if ((map[(*y) + i][*x] != 1) && (map[(*y) + i][*x] != 9)){
-          allow_move = false;
+          cout << "Sorry, this move is invalid T_T\n" << endl;
+          return true;
         }
       }
 
@@ -677,7 +680,8 @@ void ask_move(int map[][100], int *&y, int *&x, int &step, int teleport_1[2], in
 
       for (int i = 1; i < step + 1; ++i){
         if ((map[*y][(*x) - i] != 1) && (map[*y][(*x) - i] != 9)){
-          allow_move = false;
+          cout << "Sorry, this move is invalid T_T\n" << endl;
+          return true;
         }
       }
 
@@ -687,7 +691,6 @@ void ask_move(int map[][100], int *&y, int *&x, int &step, int teleport_1[2], in
 
     int new_x, new_y;
 
-    if (allow_move){
 
       switch (char_dir) {
         case 'N':
@@ -721,7 +724,7 @@ void ask_move(int map[][100], int *&y, int *&x, int &step, int teleport_1[2], in
       }
 
 
-    }
+
 
     if ( check_teleporter(*y, *x, teleport_1, teleport_2) ) {
       map[*y][*x] = 9;
@@ -786,13 +789,14 @@ void ask_move(int map[][100], int *&y, int *&x, int &step, int teleport_1[2], in
     cout << "your chess identity will be hidden now" << endl;
     cout << endl;
 
-
+    return false;
 
 }
 
 bool player1_interface( int player1_starting_point[2], int map[][100], int teleport_1[2], int teleport_2[2] )
 {
   reveal_chess(1, map);
+  hide_chess(2,map);
   bool another_move = true;
   int * current_x = NULL;
   int * current_y = NULL;
@@ -800,6 +804,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
   int step;
 
   while (another_move) {
+    reveal_chess(1, map);
     another_move = false;
     char chosen_chess;
 
@@ -841,7 +846,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
         }
 
         else {
-          ask_move(map, current_y, current_x, step, teleport_1, teleport_2, 5, 4);
+          another_move = ask_move(map, current_y, current_x, step, teleport_1, teleport_2, 5, 4);
           hide_chess(1, map);
         }
 
@@ -913,6 +918,10 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
         }
         break;
 
+      default:
+      cout << "Sorry, wrong input :(" << endl;
+      another_move = true;
+
     }
 
     if ( *current_x == 97 ) {
@@ -920,7 +929,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
       return true;
     }
 
-    if ( another ) {
+    if ( another && !another_move) {
       char response;
       cout << "Player 1, are you ready?" << endl;
       cout << "Press Y to pass the control to player 2" << endl;
@@ -934,6 +943,7 @@ bool player1_interface( int player1_starting_point[2], int map[][100], int telep
 bool player2_interface( int player1_starting_point[2], int map[][100], int teleport_1[2], int teleport_2[2] )
 {
   reveal_chess(2, map);
+  hide_chess(1,map);
   bool another_move = true;
   bool another = true;
   int * current_x = NULL;
@@ -941,6 +951,7 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
   int step;
 
   while (another_move) {
+    reveal_chess(2, map);
     another_move = false;
     char chosen_chess;
 
@@ -961,6 +972,7 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
         cout << "The game is ended" << endl;
         store_profile(player);
         store_teleport(teleport_1, teleport_2);
+
         return true;
         break;
 
@@ -1052,6 +1064,11 @@ bool player2_interface( int player1_starting_point[2], int map[][100], int telep
           hide_chess(2, map);
         }
         break;
+
+      default:
+      cout << "Sorry, wrong input :(" << endl;
+      another_move = true;
+
 
     }
 

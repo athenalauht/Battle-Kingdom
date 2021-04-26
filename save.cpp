@@ -54,3 +54,10 @@ void store_teleport(int teleport_1[2],int teleport_2[2]){
   teleport.close();
 
 }
+
+void store_count(int x){
+  ofstream count;
+  count.open("count.txt");
+  count << x;
+  count.close();
+}

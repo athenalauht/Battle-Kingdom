@@ -3,5 +3,6 @@
 #include "retrieve.cpp"
 
 bool retrieve();
+void base_chess_retrieve();
 
 #endif
