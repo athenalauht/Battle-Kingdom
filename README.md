@@ -1,10 +1,4 @@
-# COMP2113 Project Proposal
-
-## Contact Information
-**Group number:** 13\
-**Group members:**\
-Chan Chi Lok Max    (UID: 3035690440)\
-Lau Hiu Tung Athena (UID: 3035689245)
+# Battle Kingdom
 
 ## **Description**
 
